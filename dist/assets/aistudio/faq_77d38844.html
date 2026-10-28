@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IT Otázky a Odpovede</title>
+    <link rel="stylesheet" href="styles.css"> </head>
+<body>
+
+    <header>
+    <nav>
+        <a href="index.html">Domov</a>
+        <a href="faq.html">IT Otázky (FAQ)</a>
+        <a href="o_mne.html">O mne</a> </nav>
+        <div class="font-control">
+            <span>Zmena veľkosti písma:</span>
+            <button onclick="changeFontSize(1)" aria-label="Zväčšiť písmo">A+</button>
+            <button onclick="changeFontSize(-1)" aria-label="Zmenšiť písmo">A-</button>
+            <button onclick="resetFontSize()" aria-label="Pôvodná veľkosť">Reset</button>
+        </div>
+        <div class="faq-search-container">
+    <input type="text" id="faqSearch" onkeyup="filterFAQ()" placeholder="Hľadať v otázkach (napr. heslo, počítač...)" aria-label="Vyhľadávanie v FAQ">
+</div>
+    </header>
+
+    <main id="faq-container">
+        <section class="faq-item">
+            <h2 class="question">Ako vyčistím cache prehliadača?</h2>
+            <div class="answer hidden">
+                <p>Vo väčšine prehliadačov stlačte <strong>Ctrl + Shift + Del</strong> (Windows) alebo <strong>Cmd + Shift + Del</strong> (Mac) a vyberte možnosť vymazania vyrovnávacej pamäte a cookies. Odporúčam reštartovať prehliadač.</p>
+            </div>
+        </section>
+
+        <section class="faq-item">
+            <h2 class="question">Prečo mi nefunguje internet?</h2>
+            <div class="answer hidden">
+                <p>Skúste reštartovať smerovač (router) a modem. Ak to nepomôže, skontrolujte sieťové káble a potom kontaktujte svojho poskytovateľa internetu (ISP).</p>
+            </div>
+        </section>
+
+        <section class="faq-item">
+    <h2 class="question">Čo je to Wi-Fi a ako funguje?</h2>
+    <div class="answer hidden">
+        <p>Wi-Fi je bezdrôtová technológia, ktorá umožňuje vášmu počítaču, telefónu alebo tabletu pripojiť sa k internetu bez káblov. Funguje na princípe rádiových vĺn, ktoré posiela a prijíma váš router (smerovač).</p>
+    </div>
+</section>
+
+<section class="faq-item">
+    <h2 class="question">Ako správne reštartovať router?</h2>
+    <div class="answer hidden">
+        <p>Pre riešenie problémov s pripojením urobte toto: 1. Vytiahnite napájací kábel routera zo zásuvky. 2. Počkajte aspoň 10 sekúnd. 3. Zapojte kábel späť. Počkajte 1-2 minúty, kým sa router plne spustí. Toto vymaže dočasné chyby.</p>
+    </div>
+</section>
+
+<section class="faq-item">
+    <h2 class="question">Čo je to "cloud" (oblak)?</h2>
+    <div class="answer hidden">
+        <p>"Cloud" je termín, ktorým označujeme servery umiestnené na internete, ktoré ukladajú a spravujú dáta namiesto toho, aby boli uložené len na vašom lokálnom disku. Príklady sú Google Drive, OneDrive alebo Dropbox. Umožňuje vám pristupovať k súborom odkiaľkoľvek.</p>
+    </div>
+</section>
+
+<section class="faq-item">
+    <h2 class="question">Ako zistím, či je môj počítač zavírený?</h2>
+    <div class="answer hidden">
+        <p>Typické príznaky sú: veľmi pomalý chod systému, neočakávané vyskakovacie okná (pop-up reklamy), programy sa samy spúšťajú alebo nemôžete otvoriť súbory. Najlepšia ochrana je mať nainštalovaný a pravidelne aktualizovaný antivírusový program.</p>
+    </div>
+</section>
+
+<section class="faq-item">
+    <h2 class="question">Prečo sa mi tak rýchlo míňa miesto na disku?</h2>
+    <div class="answer hidden">
+        <p>Najčastejšou príčinou sú veľké súbory, ako sú fotografie a videá, ktoré zaberajú veľa miesta. Ďalšími vinníkmi sú dočasné súbory, alebo inštalácie starých programov. Odporúča sa pravidelne prejsť priečinok "Stiahnuté súbory" a mazať nepotrebné dáta.</p>
+    </div>
+</section>
+
+<section class="faq-item">
+    <h2 class="question">Ako si vytvorím silné heslo?</h2>
+    <div class="answer hidden">
+        <p>Silné heslo by malo mať aspoň 12 znakov a malo by obsahovať kombináciu veľkých a malých písmen, číslic a špeciálnych znakov (!, ?, #). Hlavne nepoužívajte rovnaké heslo pre viacero dôležitých služieb. Pomerne silné heslo má minimálne 8 znakov.</p>
+    </div>
+</section>
+
+<section class="faq-item">
+    <h2 class="question">Čo je to phising a ako sa mu vyhnúť?</h2>
+    <div class="answer hidden">
+        <p>Phising (rybárčenie) je podvod, pri ktorom sa útočník snaží získať vaše prihlasovacie údaje tým, že sa vydáva za dôveryhodnú inštitúciu (napr. banku, poštu). Nikdy neklikajte na podozrivé odkazy v e-mailoch alebo SMS a neposielajte heslá.</p>
+    </div>
+</section>
+
+<section class="faq-item">
+    <h2 class="question">Ako urobiť snímku obrazovky (screenshot)?</h2>
+    <div class="answer hidden">
+        <p>Vo väčšine Windows počítačov stačí stlačiť klávesu **"Print Screen"** (často označenú ako PrtSc alebo PrtScn). Následne obrázok vložíte (Ctrl+V) do programu Skicár (Paint) alebo priamo do správy v e-maili či chate. Na Macu použite kombináciu <strong>Shift + Command + 3</strong>. V ANDROID zariadeniach 
+Súčasne a krátko stlačte a podržte tlačidlo napájania (alebo uzamknutia) a tlačidlo zníženia hlasitosti.
+Obrazovka zabliká a objaví sa náhľad snímky. Zvukový efekt alebo vibrácie potvrdia, že snímka bola úspešne vytvorená. </p>
+    </div>
+</section>
+
+<section class="faq-item">
+    <h2 class="question">Kedy mám aktualizovať operačný systém?</h2>
+    <div class="answer hidden">
+        <p>Operačný systém (Android, Windows, IOS a macOS) by ste mali aktualizovať vždy, keď vás na to počítač vyzve. Aktualizácie totiž neprinášajú len nové funkcie, ale najmä dôležité bezpečnostné záplaty, ktoré chránia vaše dáta pred novými hrozbami.</p>
+    </div>
+</section>
+
+<section class="faq-item">
+    <h2 class="question">Čo znamená "cache" (kečka) a prečo ju mám čistiť?</h2>
+    <div class="answer hidden">
+        <p>Cache sú dočasné súbory a obrázky, ktoré si prehliadač ukladá, aby sa stránky načítali rýchlejšie. Ak sa stránka zmení, ale vy stále vidíte starú verziu, musíte cache vyčistiť. Pomôže to aj pri chybách s prihlasovaním.</p>
+    </div>
+</section>
+
+<section class="faq-item">
+    <h2 class="question">Čo sú to cookies a musím ich vždy akceptovať?</h2>
+    <div class="answer hidden">
+        <p>Cookies (súbory cookie) sú malé textové súbory, ktoré si webové stránky ukladajú do vášho počítača. Slúžia na zapamätanie si informácií o vás, napríklad či ste prihlásení, aké sú vaše preferované nastavenia, alebo čo ste si pridali do košíka.</p>
+        <p>Nemusíte ich akceptovať vždy. Ak akceptujete len "Nevyhnutné cookies", stránka si zapamätá len to, čo potrebuje pre správnu funkciu. Ak akceptujete aj "Marketingové/analytické cookies", dáte súhlas na sledovanie vášho správania pre účely reklamy.</p>
+    </div>
+</section>
+
+<section class="faq-item">
+    <h2 class="question">Čo mám robiť, ak mi prišiel podozrivý e-mail z banky alebo o výhre?</h2>
+    <div class="answer hidden">
+        <p>V žiadnom prípade neklikajte na priložené odkazy a nesťahujte žiadne súbory. Banky ani úrady nikdy nežiadajú citlivé údaje, ako sú heslá alebo čísla kariet, prostredníctvom e-mailu. Ak správa pôsobí naliehavo alebo obsahuje gramatické chyby, je to varovný signál.</p>
+        <p>Najlepším riešením je takýto e-mail okamžite vymazať. Ak máte pochybnosť, radšej zavolajte na oficiálnu infolinku danej inštitúcie a overte si, či vás skutočne kontaktovali.</p>
+    </div>
+</section>
+
+<section class="faq-item">
+    <h2 class="question">Prečo je môj počítač alebo smartfón zrazu pomalý?</h2>
+    <div class="answer hidden">
+        <p>Najbežnejšou príčinou je nahromadenie dočasných súborov a príliš veľa spustených programov na pozadí. Najjednoduchším a často najúčinnejším riešením je zariadenie úplne vypnúť a znova zapnúť, čím sa prečistí operačná pamäť.</p>
+        <p>Pomalosť môže spôsobovať aj plný úložný priestor. Skúste vymazať staré videá, rozmazané fotky alebo aplikácie, ktoré už dávno nepoužívate, aby mal systém viac „priestoru na dýchanie“.</p>
+    </div>
+</section>
+
+<section class="faq-item">
+    <h2 class="question">Čo znamená výraz „Cloud“ a kde sú uložené moje fotky?</h2>
+    <div class="answer hidden">
+        <p>Cloud (v preklade oblak) je v podstate úložisko na internete. Vaše fotky a dokumenty nie sú uložené len fyzicky vo vašom mobile, ale aj na bezpečných vzdialených serveroch veľkých spoločností (napr. Google alebo Apple).</p>
+        <p>Hlavnou výhodou je, že ak telefón stratíte alebo sa pokazí, k vašim fotkám sa jednoducho prihlásite z iného zariadenia a o nič neprídete. Slúži to teda ako automatická záloha vašich spomienok.</p>
+    </div>
+</section>
+
+<section class="faq-item">
+    <h2 class="question">Je bezpečné platiť na internete bankovou kartou?</h2>
+    <div class="answer hidden">
+        <p>Platba kartou je bezpečná, ak nakupujete u overených predajcov. Vždy skontrolujte, či sa v adresnom riadku prehliadača (pri názve webu) nachádza symbol zamknutej zámky, čo znamená, že prenos údajov je šifrovaný.</p>
+        <p>Pre maximálnu ochranu odporúčame používať dvojfaktorové overenie – platbu musíte dodatočne potvrdiť v aplikácii vašej banky alebo kódom z SMS, takže nikto iný vašu kartu bez vášho vedomia nezneužije.</p>
+    </div>
+</section>
+
+<section class="faq-item">
+    <h2 class="question">Musím za aplikácie ako WhatsApp alebo Messenger platiť?</h2>
+    <div class="answer hidden">
+        <p>Tieto aplikácie sú na stiahnutie a používanie zdarma. Na svoje fungovanie však využívajú internetové pripojenie. Ak ste pripojení na domácom Wi-Fi, neplatíte nič navyše. Ak ste však vonku a používate mobilné dáta, spotrebúvajú sa vám jednotky z vášho predplateného balíčka u operátora.</p>
+        <p>Dajte si pozor na podvodné správy, ktoré by od vás žiadali zadanie čísla karty na „predĺženie predplatného“ – ide o podvod. Oficiálni tvorcovia týchto aplikácií od vás nikdy nebudú žiadať peniaze priamo v chate.</p>
+    </div>
+</section>
+
+<section class="faq-item">
+    <h2 class="question">Ako spoznám, že správa od priateľa na Facebooku je v skutočnosti podvod?</h2>
+    <div class="answer hidden">
+        <p>Ak vám priateľ, s ktorým si bežne nepíšete, zrazu pošle odkaz s textom „Pozri, nie si na tomto videu?“ alebo vás žiada o zaslanie kódu z SMS, zbystrite pozornosť. Pravdepodobne mu niekto ukradol prístup k účtu a správy posiela automatický robot.</p>
+        <p>Najlepšou obranou je na odkaz neklikať. Skúste priateľovi zavolať klasicky cez telefón a spýtajte sa ho, či vám niečo posielal. Týmto jednoduchým krokom ochránite seba aj jeho pred ďalším šírením vírusu.</p>
+    </div>
+</section>
+
+<section class="faq-item">
+    <h2 class="question">Je dôležité inštalovať aktualizácie, ktoré mi zariadenie neustále ponúka?</h2>
+    <div class="answer hidden">
+        <p>Áno, aktualizácie sú kľúčové pre vašu bezpečnosť. Predstavte si ich ako opravu zámku na vašich dverách. Výrobcovia v nich opravujú chyby, cez ktoré by sa do vášho zariadenia mohli dostať útočníci, a zároveň pridávajú nové užitočné funkcie.</p>
+        <p>Odporúčame inštalovať aktualizácie najmä vtedy, keď ste doma na Wi-Fi a máte telefón či notebook pripojený k nabíjačke. Proces môže trvať pár minút, ale vaše dáta budú vďaka tomu oveľa lepšie chránené.</p>
+    </div>
+</section>
+
+<section class="faq-item">
+    <h2 class="question">Čo robiť, ak mi na obrazovke vyskočí okno, že môj počítač je zavírený?</h2>
+    <div class="answer hidden">
+        <p>V drvivej väčšine prípadov ide o falošný poplach a agresívnu reklamu, ktorá vás chce vystrašiť. Cieľom je prinútiť vás kliknúť na tlačidlo „Vyčistiť“ alebo zavolať na podvodné číslo technickej podpory, kde by od vás pýtali peniaze.</p>
+        <p>V takomto prípade neklikajte na žiadne tlačidlá v danom okne. Najlepšie je zavrieť celý internetový prehliadač (krížikom v pravom hornom rohu) alebo reštartovať počítač. Skutočný antivírus vás o hrozbe informuje v nenápadnom okne priamo zo systému, nie cez vyskakovacie okno na internetovej stránke.</p>
+    </div>
+</section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Alexander Bohus Cường</p>
+    </footer>
+
+    <script src="script.js"></script> 
+
+    <script>
+        // funkcia na zmenu veľkosti písma
+    let currentFontSize = 100;
+
+    function changeFontSize(direction) {
+        // Kontrola, či existuje element body, aby sa predišlo chybám
+        const body = document.body;
+        if (!body) return;
+
+        currentFontSize += (direction * 10);
+
+        // Limity, aby sa stránka nerozpadla
+        if (currentFontSize < 80) currentFontSize = 80;
+        if (currentFontSize > 180) currentFontSize = 180;
+
+        body.style.fontSize = currentFontSize + '%';
+    }
+
+    function resetFontSize() {
+        currentFontSize = 100;
+        if (document.body) {
+            document.body.style.fontSize = '100%';
+        }
+    }
+    </script>
+    <script>
+function filterFAQ() {
+    // Získame text z vyhľadávača a prevedieme ho na malé písmená
+    let input = document.getElementById('faqSearch');
+    let filter = input.value.toLowerCase();
+    
+    // Nájdeme všetky FAQ sekcie
+    let faqItems = document.querySelectorAll('.faq-item');
+
+    faqItems.forEach(item => {
+        // Hľadáme text v nadpise (otázke)
+        let questionText = item.querySelector('.question').innerText.toLowerCase();
+        
+        if (questionText.includes(filter)) {
+            item.style.display = ""; // Zobraziť
+        } else {
+            item.style.display = "none"; // Skryť
+        }
+    });
+}
+</script>
+</body>
+</html>
