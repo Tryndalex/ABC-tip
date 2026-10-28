@@ -1,0 +1,216 @@
+---
+name: Empathetic Clarity
+colors:
+  surface: '#faf8ff'
+  surface-dim: '#d2d9f4'
+  surface-bright: '#faf8ff'
+  surface-container-lowest: '#ffffff'
+  surface-container-low: '#f2f3ff'
+  surface-container: '#eaedff'
+  surface-container-high: '#e2e7ff'
+  surface-container-highest: '#dae2fd'
+  on-surface: '#131b2e'
+  on-surface-variant: '#444653'
+  inverse-surface: '#283044'
+  inverse-on-surface: '#eef0ff'
+  outline: '#757684'
+  outline-variant: '#c4c5d5'
+  surface-tint: '#3755c3'
+  primary: '#00288e'
+  on-primary: '#ffffff'
+  primary-container: '#1e40af'
+  on-primary-container: '#a8b8ff'
+  inverse-primary: '#b8c4ff'
+  secondary: '#006a61'
+  on-secondary: '#ffffff'
+  secondary-container: '#86f2e4'
+  on-secondary-container: '#006f66'
+  tertiary: '#611e00'
+  on-tertiary: '#ffffff'
+  tertiary-container: '#872d00'
+  on-tertiary-container: '#ffa583'
+  error: '#ba1a1a'
+  on-error: '#ffffff'
+  error-container: '#ffdad6'
+  on-error-container: '#93000a'
+  primary-fixed: '#dde1ff'
+  primary-fixed-dim: '#b8c4ff'
+  on-primary-fixed: '#001453'
+  on-primary-fixed-variant: '#173bab'
+  secondary-fixed: '#89f5e7'
+  secondary-fixed-dim: '#6bd8cb'
+  on-secondary-fixed: '#00201d'
+  on-secondary-fixed-variant: '#005049'
+  tertiary-fixed: '#ffdbce'
+  tertiary-fixed-dim: '#ffb59a'
+  on-tertiary-fixed: '#380d00'
+  on-tertiary-fixed-variant: '#802a00'
+  background: '#faf8ff'
+  on-background: '#131b2e'
+  surface-variant: '#dae2fd'
+typography:
+  display-lg:
+    fontFamily: Plus Jakarta Sans
+    fontSize: 40px
+    fontWeight: '700'
+    lineHeight: 52px
+    letterSpacing: -0.02em
+  display-lg-mobile:
+    fontFamily: Plus Jakarta Sans
+    fontSize: 30px
+    fontWeight: '700'
+    lineHeight: 40px
+    letterSpacing: -0.01em
+  headline-lg:
+    fontFamily: Plus Jakarta Sans
+    fontSize: 32px
+    fontWeight: '700'
+    lineHeight: 44px
+    letterSpacing: -0.01em
+  headline-lg-mobile:
+    fontFamily: Plus Jakarta Sans
+    fontSize: 26px
+    fontWeight: '700'
+    lineHeight: 36px
+    letterSpacing: 0em
+  headline-md:
+    fontFamily: Plus Jakarta Sans
+    fontSize: 24px
+    fontWeight: '600'
+    lineHeight: 34px
+    letterSpacing: 0em
+  headline-sm:
+    fontFamily: Plus Jakarta Sans
+    fontSize: 20px
+    fontWeight: '600'
+    lineHeight: 30px
+    letterSpacing: 0em
+  body-xl:
+    fontFamily: Plus Jakarta Sans
+    fontSize: 22px
+    fontWeight: '400'
+    lineHeight: 36px
+    letterSpacing: 0.01em
+  body-lg:
+    fontFamily: Plus Jakarta Sans
+    fontSize: 20px
+    fontWeight: '400'
+    lineHeight: 32px
+    letterSpacing: 0.01em
+  body-md:
+    fontFamily: Plus Jakarta Sans
+    fontSize: 18px
+    fontWeight: '400'
+    lineHeight: 28px
+    letterSpacing: 0.01em
+  label-lg:
+    fontFamily: Plus Jakarta Sans
+    fontSize: 18px
+    fontWeight: '600'
+    lineHeight: 26px
+    letterSpacing: 0.02em
+  label-md:
+    fontFamily: Plus Jakarta Sans
+    fontSize: 16px
+    fontWeight: '600'
+    lineHeight: 24px
+    letterSpacing: 0.02em
+rounded:
+  sm: 0.25rem
+  DEFAULT: 0.5rem
+  md: 0.75rem
+  lg: 1rem
+  xl: 1.5rem
+  full: 9999px
+spacing:
+  gutter: 1.5rem
+  gutter-mobile: 1rem
+  margin: 2.5rem
+  margin-mobile: 1.25rem
+  space-xs: 0.5rem
+  space-sm: 0.75rem
+  space-md: 1.25rem
+  space-lg: 2rem
+  space-xl: 3rem
+---
+
+## Brand & Style
+The design system establishes a welcoming, patient, and ultra-accessible digital environment tailored to elderly Slovak citizens navigating digital tools and public e-services. The emotional tone avoids cold institutional rigidity, conveying reassurance, dignity, and calm competence. 
+
+The aesthetic is Modern Tactile Minimalism with High-Contrast Functionalism:
+- High typographic legibility prioritizing cognitive ease and spatial orientation.
+- Generous, uncluttered compositions that minimize visual noise and decision paralysis.
+- Obvious affordances with explicit boundaries, prominent interactive states, and physical clarity over decorative abstractions.
+
+## Colors
+The color palette is calibrated for AAA WCAG compliance across all text tiers against warm, soft light canvases.
+
+- **Primary (`#1E40AF`)**: Deep royal blue communicating reliability, authority, and safety. Used for primary calls-to-action, active navigation states, and key headers.
+- **Secondary (`#0D9488`)**: Balanced therapeutic teal used for reassuring cues, verification stamps, helpful tips, and auxiliary action items.
+- **Neutral Deep (`#0F172A`)**: Near-black slate for all critical reading typography and crisp border lines, avoiding harsh pure black while maintaining maximum contrast (ratio > 12:1 against background).
+- **Surface Canvas (`#F8FAFC`)**: Soft, warm off-white canvas preventing ocular fatigue caused by stark white screens.
+- **Surface Layer (`#FFFFFF`)**: Pure white elevated surface for cards and interactive inputs to establish distinct spatial layering.
+- **Border Subtle (`#CBD5E1`)**: High-visibility boundary line (minimum 1.5px to 2px width) ensuring visible element edges for low-vision users.
+
+## Typography
+Plus Jakarta Sans was chosen for its open counters, distinct letterforms (such as disambiguated 'I', 'l', and '1'), and humanist curves, which reduce reading fatigue among elderly readers.
+
+- The baseline standard for reading content is `body-lg` (20px) with generous line heights (`1.6x` to `1.65x`) to maintain focus across long sentences.
+- No interactive or informative text drops below 16px.
+- When the global font size switcher (`A- / A+`) is activated, typography scales proportionally across rem roots (100% -> 115% -> 130%), with containers adapting layout flow without text truncation or clipping.
+
+## Layout & Spacing
+The layout employs an 8-column (tablet) to 12-column (desktop) fluid grid constrained within a maximum readable content width of 1140px. On mobile, a single-column layout with 20px (`1.25rem`) gutters ensures elements span the full readable width without cramped margins.
+
+- Spacing between consecutive interactive elements must never fall below 16px to prevent accidental taps.
+- Vertical flow prioritizes generous paragraph separation (`space-md` to `space-lg`), giving older users breathing room to process information step-by-step.
+- Touch and click zones enforce an absolute physical minimum hit area of 52px × 52px across all form factors.
+
+## Elevation & Depth
+Depth is created through defined borders combined with soft ambient light rather than deep drop shadows.
+
+- **Level 0 (Canvas)**: Background surface tint `#F8FAFC`.
+- **Level 1 (Cards, Modules)**: `#FFFFFF` surface with a crisp 1.5px border (`#CBD5E1`) and an ambient shadow `0 2px 8px -2px rgba(15, 23, 42, 0.06)`.
+- **Level 2 (Active/Hover/Focus)**: Surface border intensifies to 2px `#1E40AF` with a subtle elevation lift `0 8px 20px -4px rgba(30, 64, 175, 0.12)`.
+- **Level 3 (Modals, Overlays, Floating Accessibility Bar)**: Pure white background, 2px border `#94A3B8`, and diffused shadow `0 16px 36px -6px rgba(15, 23, 42, 0.16)`.
+- **Focus Rings**: Universal 3px solid focus ring in `#2563EB` offset by 2px from element borders for total keyboard navigation clarity.
+
+## Shapes
+A roundedness factor of 2 establishes smooth, tactile corners without overly circular or playful forms that could degrade clarity or reduce clickable surface area.
+
+- Standard buttons, form fields, and dropdowns utilize 8px (`0.5rem`) corner rounding.
+- Content cards, step-by-step guides, and callout boxes utilize 16px (`1rem`) corner rounding.
+- Pill badges and the top accessibility toggle bar use 24px (`1.5rem`) to stand out from primary content blocks.
+
+## Components
+
+### Accessibility Action Bar (A- / A+ / Audio Read-Out)
+- Fixed at the top-right of the header or sticky toolbar.
+- High-contrast segmented control: 54px button heights with explicit textual labels ("Písmo: Štandardné / Väčšie" or "A- / A+ / A++") accompanied by a speaker icon for text-to-speech.
+
+### Buttons
+- **Primary**: Solid `#1E40AF` fill with crisp white text (`label-lg`), minimum height of 54px, horizontal padding `space-lg` (32px), with clear 2px border in `#1E3A8A`.
+- **Secondary**: `#FFFFFF` background with 2px solid `#1E40AF` border and `#1E40AF` text. Hover shifts background to `#EFF6FF`.
+- **Feedback States**: Visible visual transformation on click/tap, providing haptic-like press animation (1px downward shift) and explicit high-contrast hover feedback.
+
+### Breadcrumbs
+- Prominent breadcrumb trails placed directly beneath the global navigation.
+- Minimum font size 18px with large arrow separators (`→` or heavy chevron icons) and underlines on parent links to guarantee recognizability.
+
+### Cards (Q&A Topics & Guides)
+- Background `#FFFFFF` with 2px structural border `#E2E8F0` and 24px inner padding.
+- Card titles utilize `headline-sm` with an explicit colored category badge (e.g., "Internet", "Bezpečnosť", "Smartfón").
+- Includes an explicit "Čítať odpoveď" (Read Answer) action link with an icon, ensuring users know the entire card is actionable.
+
+### Form Inputs & Search Bar
+- Massive 56px minimum height with large placeholder text (18px) in `#64748B`.
+- 2px border in `#94A3B8` by default, expanding to 3px `#1E40AF` when focused.
+- Clear search and submit buttons embedded with explicit Slovak text labels rather than standalone icons.
+
+### Checkboxes & Radios
+- Enlarged hit boxes (28px × 28px visual indicator inside a 52px target zone).
+- High-contrast checked state with bold ticks or inner discs (minimum 4px stroke) ensuring visibility without squinting.
+
+### Step-by-Step Instructions (Accordion / Linear Flow)
+- Numbered circular badges (36px × 36px) with bold numerals.
+- Large expandable trigger areas spanning full width with explicit "Rozbaliť / Zabaliť" (Expand / Collapse) indicator badges.

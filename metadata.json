@@ -1,0 +1,8 @@
+{
+  "name": "Digitálny Sprievodca Seniorov",
+  "description": "Prístupný sprievodca digitálnymi zručnosťami a štátnymi e-službami pre seniorov na Slovensku s podporou zväčšenia písma, hlasového predčítania a bezpečnosti.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
