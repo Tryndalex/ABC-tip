@@ -1,6 +1,6 @@
 import React from 'react';
 import { FontSizeLevel } from '../types';
-import { Volume2, Sun, Moon, Type, ShieldCheck, HeartHandshake, Phone } from 'lucide-react';
+import { Volume2, Square, Sun, Moon, Type, ShieldCheck, HeartHandshake, Phone } from 'lucide-react';
 
 interface HeaderProps {
   fontSize: FontSizeLevel;
@@ -173,22 +173,29 @@ export const Header: React.FC<HeaderProps> = ({
               )}
             </button>
 
-            {/* Read Aloud Button */}
+            {/* Read Aloud / Stop Button */}
             <button
               type="button"
               onClick={onReadPageAloud}
               className={`min-h-[40px] sm:min-h-[44px] px-2.5 sm:px-3.5 py-1 rounded-xl font-bold flex items-center gap-1.5 border-2 transition-all active:translate-y-[1px] focus:outline-none focus:ring-2 focus:ring-[#2563EB] cursor-pointer ${
                 isPlayingAudio
-                  ? 'bg-[#006A61] text-white border-[#004D46] animate-pulse'
+                  ? 'bg-[#BA1A1A] hover:bg-[#93000A] text-white border-[#7F1D1D] shadow-sm'
                   : 'bg-white text-[#006A61] border-[#006A61] hover:bg-[#F0FDFA]'
               }`}
-              title="Prečítať nahlas obsah stránky"
-              aria-label="Prečítať obsah nahlas"
+              title={isPlayingAudio ? 'Kliknutím zastavíte hlasové predčítanie' : 'Prečítať nahlas obsah stránky'}
+              aria-label={isPlayingAudio ? 'Zastaviť hlasové predčítanie' : 'Prečítať obsah nahlas'}
             >
-              <Volume2 className="w-5 h-5" />
-              <span className="hidden sm:inline text-xs sm:text-sm font-bold">
-                {isPlayingAudio ? 'Číta...' : 'Predčítať'}
-              </span>
+              {isPlayingAudio ? (
+                <>
+                  <Square className="w-4 h-4 fill-white" />
+                  <span className="text-xs sm:text-sm font-bold">Zastaviť</span>
+                </>
+              ) : (
+                <>
+                  <Volume2 className="w-5 h-5" />
+                  <span className="hidden sm:inline text-xs sm:text-sm font-bold">Predčítať</span>
+                </>
+              )}
             </button>
 
             {/* Mobile-only Quick Call Icon */}

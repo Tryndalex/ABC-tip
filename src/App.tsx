@@ -89,6 +89,14 @@ export default function App() {
     setAudioTitle(title);
   };
 
+  const handleStopAudio = () => {
+    if ('speechSynthesis' in window) {
+      window.speechSynthesis.cancel();
+    }
+    setAudioText(null);
+    setAudioTitle(null);
+  };
+
   const handleSearchSubmit = () => {
     // Reset category filter and any open modal so new query searches all guides
     setSelectedCategory('all');
@@ -97,6 +105,12 @@ export default function App() {
   };
 
   const handleReadPageAloud = () => {
+    // If audio is already active, clicking the button in the top right STOPS it immediately!
+    if (audioText) {
+      handleStopAudio();
+      return;
+    }
+
     const textToRead =
       'Vitajte na portáli Digitálny Sprievodca Seniorov. Ponúkame zrozumiteľné návody pre starších občanov. Ako si vybrať elektronický recept v lekárni, ako spoznať falošnú SMS správu od pošty, ako si zväčšiť písmo v smartfóne a ako získať potvrdenie o dôchodku cez internet bez čakania na úradoch. V sekcii liniek nájdete oficiálne telefónne čísla štátnych inštitúcií a nezávislej Linky pre seniorov na čísle 0800 172 500, ktorú prevádzkuje neziskové Fórum pre pomoc starším.';
     handlePlayAudio(textToRead, 'Úvodné privítanie a prehľad tém');

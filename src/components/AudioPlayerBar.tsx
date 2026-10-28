@@ -60,11 +60,13 @@ export const AudioPlayerBar: React.FC<AudioPlayerBarProps> = ({
     utterance.onend = () => {
       setIsPlaying(false);
       setIsPaused(false);
+      onClose();
     };
 
     utterance.onerror = () => {
       setIsPlaying(false);
       setIsPaused(false);
+      onClose();
     };
 
     window.speechSynthesis.speak(utterance);
