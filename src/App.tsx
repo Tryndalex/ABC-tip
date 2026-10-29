@@ -35,6 +35,7 @@ export default function App() {
   // Audio read-aloud state
   const [audioText, setAudioText] = useState<string | null>(null);
   const [audioTitle, setAudioTitle] = useState<string | null>(null);
+  const [audioSessionId, setAudioSessionId] = useState<number>(0);
 
   // Filtering & Search
   const [searchQuery, setSearchQuery] = useState<string>('');
@@ -83,10 +84,14 @@ export default function App() {
     return searchResults.map(r => r.guide);
   }, [searchResults]);
 
-  // Audio Play Trigger
+  // Audio Play Trigger: immediately cancels any active speech and starts newly requested audio
   const handlePlayAudio = (text: string, title: string) => {
+    if ('speechSynthesis' in window) {
+      window.speechSynthesis.cancel();
+    }
     setAudioText(text);
     setAudioTitle(title);
+    setAudioSessionId(Date.now());
   };
 
   const handleStopAudio = () => {
@@ -95,6 +100,7 @@ export default function App() {
     }
     setAudioText(null);
     setAudioTitle(null);
+    setAudioSessionId(0);
   };
 
   const handleSearchSubmit = () => {
@@ -459,12 +465,10 @@ export default function App() {
 
       {/* Audio Player Sticky Bar (When audio is triggered) */}
       <AudioPlayerBar
+        key={audioSessionId}
         currentText={audioText}
         currentTitle={audioTitle}
-        onClose={() => {
-          setAudioText(null);
-          setAudioTitle(null);
-        }}
+        onClose={handleStopAudio}
         isHighContrast={isHighContrast}
       />
 

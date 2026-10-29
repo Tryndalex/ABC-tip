@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { Volume2, VolumeX, Pause, Play, RotateCcw, AlertCircle } from 'lucide-react';
+import React, { useState, useEffect, useRef } from 'react';
+import { Volume2, VolumeX, Pause, Play, AlertCircle } from 'lucide-react';
 
 interface AudioPlayerBarProps {
   currentText: string | null;
@@ -19,33 +19,25 @@ export const AudioPlayerBar: React.FC<AudioPlayerBarProps> = ({
   const [speechRate, setSpeechRate] = useState<number>(0.85); // Gentle, calm pacing for seniors
   const [supported, setSupported] = useState<boolean>(true);
 
-  useEffect(() => {
-    if (!('speechSynthesis' in window)) {
-      setSupported(false);
-      return;
-    }
+  const currentUtteranceRef = useRef<SpeechSynthesisUtterance | null>(null);
+  const playIdRef = useRef<number>(0);
 
-    if (currentText) {
-      startSpeaking(currentText);
-    }
-
-    return () => {
-      if ('speechSynthesis' in window) {
-        window.speechSynthesis.cancel();
-      }
-    };
-  }, [currentText]);
-
-  const startSpeaking = (textToRead: string) => {
+  const startSpeaking = (textToRead: string, rate: number = speechRate) => {
     if (!('speechSynthesis' in window)) return;
+
+    // Increment playId so any previous utterance's callbacks are safely ignored
+    const thisPlayId = ++playIdRef.current;
+
+    // Cancel any previous speech
     window.speechSynthesis.cancel();
 
     const utterance = new SpeechSynthesisUtterance(textToRead);
+    currentUtteranceRef.current = utterance;
     utterance.lang = 'sk-SK';
-    utterance.rate = speechRate;
+    utterance.rate = rate;
     utterance.pitch = 1.0;
 
-    // Try finding Slovak voice
+    // Try finding Slovak or Czech voice
     const voices = window.speechSynthesis.getVoices();
     const skVoice = voices.find(v => v.lang.startsWith('sk') || v.lang.startsWith('cs'));
     if (skVoice) {
@@ -53,24 +45,56 @@ export const AudioPlayerBar: React.FC<AudioPlayerBarProps> = ({
     }
 
     utterance.onstart = () => {
+      if (playIdRef.current !== thisPlayId) return;
       setIsPlaying(true);
       setIsPaused(false);
     };
 
     utterance.onend = () => {
+      if (playIdRef.current !== thisPlayId) return;
       setIsPlaying(false);
       setIsPaused(false);
       onClose();
     };
 
-    utterance.onerror = () => {
+    utterance.onerror = (e) => {
+      // In Web Speech API, when an utterance is interrupted or canceled,
+      // browser fires 'interrupted' or 'canceled' - do NOT call onClose() for new playbacks!
+      if (e.error === 'interrupted' || e.error === 'canceled') {
+        return;
+      }
+      if (playIdRef.current !== thisPlayId) return;
       setIsPlaying(false);
       setIsPaused(false);
       onClose();
     };
 
-    window.speechSynthesis.speak(utterance);
+    // A tiny timeout allows the browser engine to flush any previous cancellation buffer
+    setTimeout(() => {
+      if (playIdRef.current === thisPlayId) {
+        window.speechSynthesis.speak(utterance);
+      }
+    }, 40);
   };
+
+  useEffect(() => {
+    if (!('speechSynthesis' in window)) {
+      setSupported(false);
+      return;
+    }
+
+    if (currentText) {
+      startSpeaking(currentText, speechRate);
+    }
+
+    return () => {
+      // Increment so this unmounted instance ignores callbacks
+      playIdRef.current++;
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+      }
+    };
+  }, [currentText]);
 
   const handleTogglePlay = () => {
     if (!('speechSynthesis' in window)) return;
@@ -82,11 +106,12 @@ export const AudioPlayerBar: React.FC<AudioPlayerBarProps> = ({
       window.speechSynthesis.resume();
       setIsPaused(false);
     } else if (currentText) {
-      startSpeaking(currentText);
+      startSpeaking(currentText, speechRate);
     }
   };
 
   const handleStop = () => {
+    playIdRef.current++;
     if ('speechSynthesis' in window) {
       window.speechSynthesis.cancel();
     }
@@ -97,9 +122,9 @@ export const AudioPlayerBar: React.FC<AudioPlayerBarProps> = ({
 
   const handleRateChange = (newRate: number) => {
     setSpeechRate(newRate);
-    if (currentText && isPlaying) {
-      // restart with new rate
-      startSpeaking(currentText);
+    if (currentText) {
+      // Restart current text smoothly with the new pace
+      startSpeaking(currentText, newRate);
     }
   };
 
@@ -134,7 +159,7 @@ export const AudioPlayerBar: React.FC<AudioPlayerBarProps> = ({
         <div className="flex items-center gap-3">
           <button
             onClick={handleTogglePlay}
-            className={`min-h-[52px] min-w-[52px] px-5 py-2.5 rounded-lg font-bold flex items-center gap-2 border-2 transition-all active:translate-y-[1px] focus:outline-none focus:ring-4 focus:ring-yellow-300 ${
+            className={`min-h-[52px] min-w-[52px] px-5 py-2.5 rounded-lg font-bold flex items-center gap-2 border-2 transition-all active:translate-y-[1px] focus:outline-none focus:ring-4 focus:ring-yellow-300 cursor-pointer ${
               isHighContrast
                 ? 'bg-yellow-400 text-black border-white hover:bg-yellow-300'
                 : 'bg-white text-[#00288E] border-white hover:bg-blue-50'
@@ -156,7 +181,7 @@ export const AudioPlayerBar: React.FC<AudioPlayerBarProps> = ({
 
           <button
             onClick={handleStop}
-            className="min-h-[52px] px-4 py-2.5 rounded-lg font-semibold bg-white/10 hover:bg-white/20 text-white border-2 border-white/40 flex items-center gap-2 active:translate-y-[1px] focus:outline-none focus:ring-4 focus:ring-yellow-300"
+            className="min-h-[52px] px-4 py-2.5 rounded-lg font-semibold bg-white/10 hover:bg-white/20 text-white border-2 border-white/40 flex items-center gap-2 active:translate-y-[1px] focus:outline-none focus:ring-4 focus:ring-yellow-300 cursor-pointer"
             aria-label="Ukončiť hlasové čítanie"
           >
             <VolumeX className="w-6 h-6" />
@@ -168,7 +193,7 @@ export const AudioPlayerBar: React.FC<AudioPlayerBarProps> = ({
             <span className="text-xs uppercase font-semibold text-white/80 px-2">Rýchlosť:</span>
             <button
               onClick={() => handleRateChange(0.75)}
-              className={`px-3 py-1.5 rounded text-sm font-bold min-h-[40px] ${
+              className={`px-3 py-1.5 rounded text-sm font-bold min-h-[40px] cursor-pointer ${
                 speechRate === 0.75 ? 'bg-white text-[#00288E]' : 'text-white hover:bg-white/10'
               }`}
             >
@@ -176,7 +201,7 @@ export const AudioPlayerBar: React.FC<AudioPlayerBarProps> = ({
             </button>
             <button
               onClick={() => handleRateChange(0.9)}
-              className={`px-3 py-1.5 rounded text-sm font-bold min-h-[40px] ${
+              className={`px-3 py-1.5 rounded text-sm font-bold min-h-[40px] cursor-pointer ${
                 speechRate === 0.9 ? 'bg-white text-[#00288E]' : 'text-white hover:bg-white/10'
               }`}
             >
@@ -188,7 +213,7 @@ export const AudioPlayerBar: React.FC<AudioPlayerBarProps> = ({
         {/* Right: Close bar */}
         <button
           onClick={handleStop}
-          className="text-white/80 hover:text-white underline text-sm min-h-[44px] px-3 font-medium"
+          className="text-white/80 hover:text-white underline text-sm min-h-[44px] px-3 font-medium cursor-pointer"
         >
           Zavrieť lištu
         </button>
