@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowUp, Heart, ShieldCheck, Printer, Phone } from 'lucide-react';
+import { ArrowUp, Heart, ShieldCheck, Printer, GraduationCap, ExternalLink } from 'lucide-react';
 
 interface FooterProps {
   isHighContrast: boolean;
@@ -40,7 +40,7 @@ export const Footer: React.FC<FooterProps> = ({ isHighContrast }) => {
             <button
               type="button"
               onClick={handlePrint}
-              className="min-h-[52px] px-5 py-2.5 rounded-xl font-bold text-base flex items-center gap-2 text-[#00288E] bg-[#F2F3FF] hover:bg-[#E2E7FF] border-2 border-[#CBD5E1] transition-all"
+              className="min-h-[52px] px-5 py-2.5 rounded-xl font-bold text-base flex items-center gap-2 text-[#00288E] bg-[#F2F3FF] hover:bg-[#E2E7FF] border-2 border-[#CBD5E1] transition-all cursor-pointer"
             >
               <Printer className="w-5 h-5 text-[#1E40AF]" />
               <span>Vytlačiť stránku</span>
@@ -49,7 +49,7 @@ export const Footer: React.FC<FooterProps> = ({ isHighContrast }) => {
             <button
               type="button"
               onClick={scrollToTop}
-              className="min-h-[52px] px-5 py-2.5 rounded-xl font-bold text-base flex items-center gap-2 text-white bg-[#1E40AF] hover:bg-[#00288E] border-2 border-[#1E3A8A] transition-all"
+              className="min-h-[52px] px-5 py-2.5 rounded-xl font-bold text-base flex items-center gap-2 text-white bg-[#1E40AF] hover:bg-[#00288E] border-2 border-[#1E3A8A] transition-all cursor-pointer"
               aria-label="Vrátiť sa na začiatok stránky"
             >
               <ArrowUp className="w-5 h-5" />
@@ -111,12 +111,71 @@ export const Footer: React.FC<FooterProps> = ({ isHighContrast }) => {
 
         </div>
 
-        {/* Bottom copyright */}
-        <div className="pt-6 border-t border-[#EAEDFF] flex flex-col sm:flex-row items-center justify-between text-sm text-[#444653] gap-3">
-          <div>
-            © 2026 Digitálny Sprievodca Seniorov • Dizajnový štandard Empathetic Clarity
+        {/* Dedicated aesthetic attribution banner */}
+        <div
+          className={`my-6 p-5 sm:p-6 rounded-2xl border-2 transition-all flex flex-col sm:flex-row items-start sm:items-center gap-4 ${
+            isHighContrast
+              ? 'bg-neutral-900 border-2 border-yellow-400 text-white'
+              : 'bg-gradient-to-r from-[#F0FDFA] via-[#F2F3FF] to-[#FAF8FF] border-[#B8C4FF] text-[#131B2E] shadow-sm'
+          }`}
+        >
+          <div
+            className={`flex-shrink-0 w-12 h-12 rounded-2xl flex items-center justify-center font-bold text-lg shadow-xs ${
+              isHighContrast
+                ? 'bg-yellow-400 text-black'
+                : 'bg-[#1E40AF] text-white'
+            }`}
+          >
+            <GraduationCap className="w-6 h-6" />
           </div>
-          <div className="flex items-center gap-4">
+          <div className="flex-grow text-base sm:text-lg leading-relaxed">
+            <p>
+              Pre svojich študentov a všetkých seniorov, ktorí potrebujú pomôcť s IT alebo online svetom, vytvoril váš lektor{' '}
+              <strong className={isHighContrast ? 'text-yellow-300 font-extrabold' : 'text-[#00288E] font-extrabold'}>
+                Alexander Bohuš Cường
+              </strong>{' '}
+              z{' '}
+              <a
+                href="https://abcweb.ing"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`inline-flex items-center gap-1 font-extrabold underline decoration-2 underline-offset-4 cursor-pointer transition-colors ${
+                  isHighContrast
+                    ? 'text-yellow-300 hover:text-white decoration-yellow-300'
+                    : 'text-[#006A61] hover:text-[#00288E] decoration-[#006A61] hover:decoration-[#00288E]'
+                }`}
+                title="Otvoriť web lektora abcweb.ing v novom okne"
+              >
+                <span>abcweb.ing</span>
+                <ExternalLink className="w-4 h-4 inline-block" />
+              </a>{' '}
+              v spolupráci s niektorými študentmi z projektu{' '}
+              <span className={`font-bold ${isHighContrast ? 'text-white' : 'text-[#0F172A]'}`}>
+                Digitálni seniori
+              </span>.
+            </p>
+          </div>
+        </div>
+
+        {/* Bottom copyright & domain */}
+        <div className="pt-6 border-t border-[#EAEDFF] flex flex-col sm:flex-row items-center justify-between text-sm sm:text-base text-[#444653] gap-3">
+          <div className="flex items-center gap-2">
+            <span>© 2026 Digitálny Sprievodca Seniorov</span>
+            <span>•</span>
+            <a
+              href="https://abctip.sk"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`font-bold transition-colors ${
+                isHighContrast
+                  ? 'text-yellow-300 hover:underline'
+                  : 'text-[#00288E] hover:underline'
+              }`}
+            >
+              abctip.sk
+            </a>
+          </div>
+          <div className="flex items-center gap-4 font-medium">
             <span>Slovenská republika</span>
             <span>•</span>
             <span>Prístupnosť pre všetkých</span>
