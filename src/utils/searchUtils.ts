@@ -277,3 +277,101 @@ export function scoreGuideSearch(guide: Guide, rawQuery: string): SearchMatchRes
 
   return { guide, score: 0, matchedTerms: [] };
 }
+
+/**
+ * Searches an English course word with:
+ * 1. Diacritic tolerance (á->a, č->c, ď->d, etc.)
+ * 2. Typo tolerance of up to 2 letters (Levenshtein distance <= 2)
+ * 3. Substring, prefix, and stem matching across all fields
+ */
+export function matchesEnglishWordFuzzy(
+  word: {
+    english: string;
+    slovak: string;
+    phoneticSk: string;
+    explanation: string;
+    exampleSentenceEn?: string;
+    exampleSentenceSk?: string;
+  },
+  rawQuery: string
+): boolean {
+  const normQuery = normalizeText(rawQuery);
+  if (!normQuery) return true;
+
+  const queryTokens = normQuery.split(/\s+/).filter(t => t.length > 0);
+  if (queryTokens.length === 0) return true;
+
+  const fields = [
+    normalizeText(word.english),
+    normalizeText(word.slovak),
+    normalizeText(word.phoneticSk),
+    normalizeText(word.explanation),
+    normalizeText(word.exampleSentenceEn || ''),
+    normalizeText(word.exampleSentenceSk || '')
+  ];
+
+  const fullText = fields.join(' ');
+  const collapsedFields = fields.map(f => f.replace(/\s+/g, ''));
+  const targetTokens = fullText.split(/\s+/).filter(t => t.length > 0);
+
+  // Every token in user query must match something in the word
+  return queryTokens.every(qToken => {
+    // 1. Direct full-text substring match (handles accent-free search e.g. "liek", "nemocnica", "heslo")
+    if (fullText.includes(qToken)) {
+      return true;
+    }
+
+    // 2. Collapsed text match without spaces (e.g. "pasvord" matches "[pás-vörd]" which normalizes to "pas vord")
+    if (collapsedFields.some(cf => cf.includes(qToken) || (qToken.length >= 4 && qToken.includes(cf)))) {
+      return true;
+    }
+
+    const qLen = qToken.length;
+
+    // 3. Typo-tolerant matching (tolerating up to 2 letter errors)
+    for (const tToken of targetTokens) {
+      const tLen = tToken.length;
+
+      // Exact token or substring match
+      if (tToken === qToken || tToken.includes(qToken) || (tLen >= 3 && qToken.includes(tToken))) {
+        return true;
+      }
+
+      // Check common stem/prefix for Slovak/English word inflections (e.g. "prihlasit" vs "prihlasenie")
+      if (qLen >= 4 && tLen >= 4) {
+        let commonPrefixLen = 0;
+        const minL = Math.min(qLen, tLen);
+        while (commonPrefixLen < minL && qToken[commonPrefixLen] === tToken[commonPrefixLen]) {
+          commonPrefixLen++;
+        }
+        if (commonPrefixLen >= 5 || (commonPrefixLen >= 4 && commonPrefixLen >= qLen - 1)) {
+          return true;
+        }
+      }
+
+      // Max allowed edit distance:
+      // Short tokens (length 3, e.g. "pas", "ano"): max 1 edit
+      // Tokens length >= 4 (e.g. "pasword" vs "password", "nemocnyca" vs "nemocnica", "downlod" vs "download"): max 2 edits
+      const maxDistance = qLen <= 3 ? 1 : 2;
+
+      // Check Levenshtein distance if token lengths are within 2 characters
+      if (Math.abs(qLen - tLen) <= 2 && Math.min(qLen, tLen) >= 3) {
+        const dist = levenshteinDistance(qToken, tToken);
+        if (dist <= maxDistance) {
+          return true;
+        }
+      }
+
+      // Prefix edit check: e.g. user typed "nemocnic" and target is "nemocnica"
+      if (tLen > qLen && tLen - qLen <= 2 && qLen >= 4) {
+        const prefix = tToken.substring(0, qLen);
+        if (levenshteinDistance(qToken, prefix) <= 1) {
+          return true;
+        }
+      }
+    }
+
+    return false;
+  });
+}
+

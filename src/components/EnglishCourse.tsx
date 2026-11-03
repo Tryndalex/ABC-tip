@@ -5,6 +5,7 @@ import {
   EnglishWord,
   EnglishCategory
 } from '../data/englishCourseData';
+import { matchesEnglishWordFuzzy } from '../utils/searchUtils';
 import { EnglishIllustration } from './EnglishIllustration';
 import {
   Volume2,
@@ -132,22 +133,20 @@ export const EnglishCourse: React.FC<EnglishCourseProps> = ({ isHighContrast }) 
     setSpeakingWordId(null);
   };
 
-  // Filtered words
+  // Filtered words with diacritic-tolerant & typo-tolerant fuzzy search (up to 2 letter errors)
   const filteredWords = useMemo(() => {
-    const q = searchQuery.toLowerCase().trim();
     return ENGLISH_WORDS.filter(w => {
       const matchesCategory = selectedCategory === 'all' || w.category === selectedCategory;
       if (!matchesCategory) return false;
-      if (!q) return true;
-
-      return (
-        w.english.toLowerCase().includes(q) ||
-        w.slovak.toLowerCase().includes(q) ||
-        w.phoneticSk.toLowerCase().includes(q) ||
-        w.explanation.toLowerCase().includes(q)
-      );
+      return matchesEnglishWordFuzzy(w, searchQuery);
     });
   }, [selectedCategory, searchQuery]);
+
+  // Total matches across all categories (allows helpful one-click switch if current category has 0 matches)
+  const allCategoryMatchesCount = useMemo(() => {
+    if (!searchQuery.trim()) return ENGLISH_WORDS.length;
+    return ENGLISH_WORDS.filter(w => matchesEnglishWordFuzzy(w, searchQuery)).length;
+  }, [searchQuery]);
 
   // Quiz questions generation (shuffled 8 random items from course words)
   const quizQuestions = useMemo(() => {
@@ -331,7 +330,7 @@ export const EnglishCourse: React.FC<EnglishCourseProps> = ({ isHighContrast }) 
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Hľadať slovíčko (napr. Heslo, Download, Káva, Pas, Lekár)..."
+                placeholder="Hľadať slovíčko (napr. Heslo, Download, Pasword, Nemocnyca, Lekarn, Káva)..."
                 className={`w-full min-h-[54px] pl-13 pr-12 text-base sm:text-lg rounded-2xl border-2 font-medium transition-all focus:outline-none focus:ring-4 focus:ring-[#2563EB]/20 ${
                   isHighContrast
                     ? 'bg-black text-white border-yellow-400 placeholder:text-neutral-400'
@@ -347,6 +346,21 @@ export const EnglishCourse: React.FC<EnglishCourseProps> = ({ isHighContrast }) 
                 >
                   <X className="w-5 h-5" />
                 </button>
+              )}
+            </div>
+
+            {/* Senior Search Guidance & Match Counter */}
+            <div className="flex flex-wrap items-center justify-between gap-2 px-1 text-xs sm:text-sm">
+              <div className="flex items-center gap-1.5 text-[#334155] font-medium">
+                <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
+                <span>
+                  Hľadanie funguje <strong>bez dĺžňov a mäkčeňov</strong> a prepáči <strong>až 2 preklepy</strong> v slove.
+                </span>
+              </div>
+              {searchQuery.trim() && (
+                <div className="font-bold text-[#1E40AF]">
+                  Nájdené slovíčka: {filteredWords.length}
+                </div>
               )}
             </div>
 
@@ -376,22 +390,54 @@ export const EnglishCourse: React.FC<EnglishCourseProps> = ({ isHighContrast }) 
             </div>
           </div>
 
-          {/* Words Grid */}
+          {/* Words Grid or Empty State */}
           {filteredWords.length === 0 ? (
-            <div className="p-8 text-center rounded-2xl border-2 border-dashed border-[#CBD5E1] bg-white">
-              <p className="text-xl font-bold text-[#0F172A] mb-2">
-                Nenašli sa žiadne slovíčka pre výraz „{searchQuery}“
-              </p>
-              <button
-                type="button"
-                onClick={() => {
-                  setSearchQuery('');
-                  setSelectedCategory('all');
-                }}
-                className="mt-2 px-5 py-2.5 rounded-xl font-bold text-base bg-[#1E40AF] text-white hover:bg-[#00288E] cursor-pointer"
-              >
-                Zobraziť všetky slovíčka
-              </button>
+            <div className={`p-8 text-center rounded-2xl border-2 ${
+              isHighContrast ? 'bg-neutral-900 border-yellow-400 text-white' : 'bg-white border-[#CBD5E1]'
+            }`}>
+              {selectedCategory !== 'all' && allCategoryMatchesCount > 0 ? (
+                <div className="max-w-xl mx-auto space-y-4">
+                  <div className="w-12 h-12 rounded-full bg-blue-100 text-[#1E40AF] flex items-center justify-center mx-auto">
+                    <Search className="w-6 h-6" />
+                  </div>
+                  <h3 className="text-xl font-bold text-[#0F172A]">
+                    V tejto téme sa slovíčko „{searchQuery}“ nenachádza
+                  </h3>
+                  <p className="text-base text-[#475569]">
+                    V ostatných kategóriách sme však našli <strong>{allCategoryMatchesCount}</strong> vyhovujúcich slovíčok (aj s toleranciou preklepov).
+                  </p>
+                  <button
+                    type="button"
+                    onClick={() => setSelectedCategory('all')}
+                    className="min-h-[50px] px-6 py-3 rounded-xl font-bold text-base bg-[#1E40AF] text-white hover:bg-[#00288E] cursor-pointer inline-flex items-center gap-2 shadow-sm"
+                  >
+                    <BookOpen className="w-5 h-5" />
+                    <span>Zobraziť nájdené slovíčka vo všetkých témach ({allCategoryMatchesCount})</span>
+                  </button>
+                </div>
+              ) : (
+                <div className="max-w-xl mx-auto space-y-4">
+                  <div className="w-12 h-12 rounded-full bg-amber-100 text-amber-700 flex items-center justify-center mx-auto">
+                    <HelpCircle className="w-6 h-6" />
+                  </div>
+                  <h3 className="text-xl font-bold text-[#0F172A]">
+                    Nenašli sa žiadne slovíčka pre výraz „{searchQuery}“
+                  </h3>
+                  <p className="text-base text-[#475569]">
+                    Hľadanie rozumie slovám bez dĺžňov a mäkčeňov a toleruje až 2 preklepy (napr. <em>pasword</em>, <em>downlod</em>, <em>nemocnyca</em>, <em>lekarn</em>).
+                  </p>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setSearchQuery('');
+                      setSelectedCategory('all');
+                    }}
+                    className="min-h-[48px] px-5 py-2.5 rounded-xl font-bold text-base bg-[#1E40AF] text-white hover:bg-[#00288E] cursor-pointer"
+                  >
+                    Zobraziť všetky slovíčka kurzu
+                  </button>
+                </div>
+              )}
             </div>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
