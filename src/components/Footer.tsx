@@ -132,7 +132,7 @@ export const Footer: React.FC<FooterProps> = ({ isHighContrast }) => {
             <p>
               Pre svojich študentov a všetkých seniorov, ktorí potrebujú pomôcť s IT alebo online svetom, vytvoril váš lektor{' '}
               <strong className={isHighContrast ? 'text-yellow-300 font-extrabold' : 'text-[#00288E] font-extrabold'}>
-                Alexander Bohuš Cường
+                Alex
               </strong>{' '}
               z{' '}
               <a

@@ -123,28 +123,22 @@ export const SearchBar: React.FC<SearchBarProps> = ({
         </div>
       </form>
 
-      {/* Quick Search Suggestions & Diacritics Helper */}
-      <div className="mt-3 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-        <div className="flex flex-wrap items-center gap-2">
-          <span className="text-sm sm:text-base font-semibold text-[#444653] flex items-center gap-1">
-            <Sparkles className="w-4 h-4 text-[#006A61]" />
-            Často hľadané otázky:
-          </span>
-          {popularSuggestions.map((suggestion) => (
-            <button
-              key={suggestion}
-              type="button"
-              onClick={() => handleSuggestionClick(suggestion)}
-              className="text-sm sm:text-base px-3 py-1.5 rounded-lg bg-[#FFFFFF] border border-[#CBD5E1] text-[#00288E] font-medium hover:border-[#1E40AF] hover:bg-[#F2F3FF] transition-all cursor-pointer underline-offset-2 hover:underline"
-            >
-              {suggestion}
-            </button>
-          ))}
-        </div>
-
-        <div className="text-xs sm:text-sm text-[#006A61] font-semibold flex items-center gap-1 bg-[#F0FDFA] px-2.5 py-1 rounded-lg border border-[#CCFBF1] self-start sm:self-center">
-          <span>✓ Chápe celé otázky aj slová bez diakritiky</span>
-        </div>
+      {/* Quick Search Suggestions */}
+      <div className="mt-3 flex flex-wrap items-center gap-2">
+        <span className="text-sm sm:text-base font-semibold text-[#444653] flex items-center gap-1">
+          <Sparkles className="w-4 h-4 text-[#006A61]" />
+          Často hľadané otázky:
+        </span>
+        {popularSuggestions.map((suggestion) => (
+          <button
+            key={suggestion}
+            type="button"
+            onClick={() => handleSuggestionClick(suggestion)}
+            className="text-sm sm:text-base px-3 py-1.5 rounded-lg bg-[#FFFFFF] border border-[#CBD5E1] text-[#00288E] font-medium hover:border-[#1E40AF] hover:bg-[#F2F3FF] transition-all cursor-pointer underline-offset-2 hover:underline"
+          >
+            {suggestion}
+          </button>
+        ))}
       </div>
 
       {/* Category Filter Tabs with minimum 52px hit targets */}
