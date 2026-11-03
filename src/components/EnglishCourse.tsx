@@ -34,8 +34,8 @@ export const EnglishCourse: React.FC<EnglishCourseProps> = ({ isHighContrast }) 
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [searchQuery, setSearchQuery] = useState<string>('');
 
-  // Speech pace: 0.75 (calm/slow for seniors) or 0.9 (standard)
-  const [speechRate, setSpeechRate] = useState<number>(0.75);
+  // Fixed gentle and clear speech pace for seniors
+  const SPEECH_RATE = 0.8;
   const [speakingWordId, setSpeakingWordId] = useState<string | null>(null);
 
   // Audio play id reference to avoid race conditions
@@ -57,7 +57,7 @@ export const EnglishCourse: React.FC<EnglishCourseProps> = ({ isHighContrast }) 
 
     const utterance = new SpeechSynthesisUtterance(word.english);
     utterance.lang = 'en-US';
-    utterance.rate = speechRate;
+    utterance.rate = SPEECH_RATE;
     utterance.pitch = 1.0;
 
     const voices = window.speechSynthesis.getVoices();
@@ -148,14 +148,16 @@ export const EnglishCourse: React.FC<EnglishCourseProps> = ({ isHighContrast }) 
     return ENGLISH_WORDS.filter(w => matchesEnglishWordFuzzy(w, searchQuery)).length;
   }, [searchQuery]);
 
-  // Quiz questions generation (shuffled 8 random items from course words)
+  // Quiz questions generation (10 varied items from course words)
   const quizQuestions = useMemo(() => {
-    // Generate a fixed set of 8 words with choices
-    const questions = ENGLISH_WORDS.slice(0, 10).map((targetWord, index) => {
+    const step = Math.max(1, Math.floor(ENGLISH_WORDS.length / 10));
+    const selectedTargets = Array.from({ length: 10 }, (_, i) => ENGLISH_WORDS[(i * step) % ENGLISH_WORDS.length]);
+
+    const questions = selectedTargets.map((targetWord, index) => {
       // Find 2 wrong alternatives from other words
-      const otherWords = ENGLISH_WORDS.filter(w => w.id !== targetWord.id);
-      const wrong1 = otherWords[(index * 2) % otherWords.length];
-      const wrong2 = otherWords[(index * 2 + 5) % otherWords.length];
+      const otherWords = ENGLISH_WORDS.filter(w => w.id !== targetWord.id && w.slovak !== targetWord.slovak);
+      const wrong1 = otherWords[(index * 4 + 1) % otherWords.length];
+      const wrong2 = otherWords[(index * 4 + 3) % otherWords.length];
 
       // Shuffle options deterministically
       const options = [
@@ -227,50 +229,24 @@ export const EnglishCourse: React.FC<EnglishCourseProps> = ({ isHighContrast }) 
             </p>
           </div>
 
-          {/* Quick Stats / Voice rate selector */}
-          <div className={`p-4 rounded-2xl border-2 flex flex-col gap-3 min-w-[240px] ${
+          {/* Practical Scope Badge */}
+          <div className={`p-4 rounded-2xl border-2 flex items-center gap-3.5 min-w-[240px] ${
             isHighContrast
-              ? 'bg-black border-yellow-400'
+              ? 'bg-black border-yellow-400 text-white'
               : 'bg-white border-[#CBD5E1] shadow-xs'
           }`}>
-            <div className="text-xs font-bold uppercase tracking-wider text-[#444653]">
-              Rýchlosť výslovnosti
+            <div className={`w-11 h-11 rounded-xl flex items-center justify-center shrink-0 ${
+              isHighContrast ? 'bg-yellow-400 text-black' : 'bg-[#EEF2FF] text-[#1E40AF]'
+            }`}>
+              <Volume2 className="w-6 h-6" />
             </div>
-            <div className="flex items-center gap-2">
-              <button
-                type="button"
-                onClick={() => setSpeechRate(0.7)}
-                className={`flex-1 min-h-[44px] px-3 py-2 rounded-xl text-sm font-bold border-2 transition-all cursor-pointer ${
-                  speechRate <= 0.75
-                    ? isHighContrast
-                      ? 'bg-yellow-400 text-black border-yellow-400'
-                      : 'bg-[#1E40AF] text-white border-[#1E40AF]'
-                    : 'bg-transparent text-[#131B2E] border-[#CBD5E1] hover:bg-slate-50'
-                }`}
-                title="Pomalé, zreteľné čítanie pre ľahšie pochopenie"
-              >
-                Pomalé (pre seniorov)
-              </button>
-
-              <button
-                type="button"
-                onClick={() => setSpeechRate(0.95)}
-                className={`min-h-[44px] px-3 py-2 rounded-xl text-sm font-bold border-2 transition-all cursor-pointer ${
-                  speechRate > 0.75
-                    ? isHighContrast
-                      ? 'bg-yellow-400 text-black border-yellow-400'
-                      : 'bg-[#1E40AF] text-white border-[#1E40AF]'
-                    : 'bg-transparent text-[#131B2E] border-[#CBD5E1] hover:bg-slate-50'
-                }`}
-                title="Štandardná bežná rýchlosť"
-              >
-                Bežné
-              </button>
-            </div>
-
-            <div className="text-xs text-[#64748B] flex items-center gap-1.5 pt-1">
-              <Volume2 className="w-4 h-4 text-[#006A61]" />
-              <span>Spolu {ENGLISH_WORDS.length} praktických slovíčok</span>
+            <div>
+              <div className="text-xs font-bold uppercase tracking-wider text-[#64748B]">
+                Praktický rozsah
+              </div>
+              <div className="text-lg font-extrabold text-[#0F172A]">
+                {ENGLISH_WORDS.length} praktických slovíčok
+              </div>
             </div>
           </div>
         </div>
@@ -330,7 +306,7 @@ export const EnglishCourse: React.FC<EnglishCourseProps> = ({ isHighContrast }) 
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Hľadať slovíčko (napr. Heslo, Download, Pasword, Nemocnyca, Lekarn, Káva)..."
+                placeholder="Hľadať slovíčko (napr. Heslo, Káva, Autobus, Hotel, Reštaurácia)..."
                 className={`w-full min-h-[54px] pl-13 pr-12 text-base sm:text-lg rounded-2xl border-2 font-medium transition-all focus:outline-none focus:ring-4 focus:ring-[#2563EB]/20 ${
                   isHighContrast
                     ? 'bg-black text-white border-yellow-400 placeholder:text-neutral-400'
@@ -349,22 +325,14 @@ export const EnglishCourse: React.FC<EnglishCourseProps> = ({ isHighContrast }) 
               )}
             </div>
 
-            {/* Senior Search Guidance & Match Counter */}
-            <div className="flex flex-wrap items-center justify-between gap-2 px-1 text-xs sm:text-sm">
-              <div className="flex items-center gap-1.5 text-[#334155] font-medium">
-                <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
-                <span>
-                  Hľadanie funguje <strong>bez dĺžňov a mäkčeňov</strong> a prepáči <strong>až 2 preklepy</strong> v slove.
-                </span>
+            {/* Results counter when searching */}
+            {searchQuery.trim() && (
+              <div className="text-sm font-bold text-[#1E40AF] px-1">
+                Nájdené slovíčka: {filteredWords.length}
               </div>
-              {searchQuery.trim() && (
-                <div className="font-bold text-[#1E40AF]">
-                  Nájdené slovíčka: {filteredWords.length}
-                </div>
-              )}
-            </div>
+            )}
 
-            {/* Category Filter Buttons */}
+            {/* Category Filter Buttons - clicking resets search */}
             <div className="flex flex-wrap gap-2 pt-1" role="tablist" aria-label="Témy angličtiny">
               {ENGLISH_CATEGORIES.map((cat) => {
                 const isSelected = selectedCategory === cat.id;
@@ -372,7 +340,10 @@ export const EnglishCourse: React.FC<EnglishCourseProps> = ({ isHighContrast }) 
                   <button
                     key={cat.id}
                     type="button"
-                    onClick={() => setSelectedCategory(cat.id)}
+                    onClick={() => {
+                      setSelectedCategory(cat.id);
+                      setSearchQuery('');
+                    }}
                     className={`min-h-[46px] px-4 py-2 rounded-xl text-sm sm:text-base font-bold border-2 transition-all cursor-pointer ${
                       isSelected
                         ? isHighContrast
@@ -404,11 +375,13 @@ export const EnglishCourse: React.FC<EnglishCourseProps> = ({ isHighContrast }) 
                     V tejto téme sa slovíčko „{searchQuery}“ nenachádza
                   </h3>
                   <p className="text-base text-[#475569]">
-                    V ostatných kategóriách sme však našli <strong>{allCategoryMatchesCount}</strong> vyhovujúcich slovíčok (aj s toleranciou preklepov).
+                    V ostatných kategóriách sme však našli <strong>{allCategoryMatchesCount}</strong> vyhovujúcich slovíčok.
                   </p>
                   <button
                     type="button"
-                    onClick={() => setSelectedCategory('all')}
+                    onClick={() => {
+                      setSelectedCategory('all');
+                    }}
                     className="min-h-[50px] px-6 py-3 rounded-xl font-bold text-base bg-[#1E40AF] text-white hover:bg-[#00288E] cursor-pointer inline-flex items-center gap-2 shadow-sm"
                   >
                     <BookOpen className="w-5 h-5" />
@@ -424,7 +397,7 @@ export const EnglishCourse: React.FC<EnglishCourseProps> = ({ isHighContrast }) 
                     Nenašli sa žiadne slovíčka pre výraz „{searchQuery}“
                   </h3>
                   <p className="text-base text-[#475569]">
-                    Hľadanie rozumie slovám bez dĺžňov a mäkčeňov a toleruje až 2 preklepy (napr. <em>pasword</em>, <em>downlod</em>, <em>nemocnyca</em>, <em>lekarn</em>).
+                    Skúste zadať iné slovenské alebo anglické slovo, prípadne vyberte inú kategóriu.
                   </p>
                   <button
                     type="button"

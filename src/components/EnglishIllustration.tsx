@@ -434,6 +434,317 @@ export const EnglishIllustration: React.FC<EnglishIllustrationProps> = ({
           </g>
         );
 
+      case 'goodnight':
+        return (
+          <g>
+            {/* Crescent moon */}
+            <path d="M40 12 C24 12 16 26 18 42 C20 50 26 56 34 58 C26 52 24 40 28 30 C32 20 40 14 46 14 C44 13 42 12 40 12 Z" fill={isHighContrast ? '#FACC15' : '#FDE047'} stroke={strokeColor} strokeWidth={strokeWidth} strokeLinejoin="round" />
+            {/* Stars */}
+            <path d="M48 24 L50 28 L54 28 L51 31 L52 35 L48 32 L44 35 L45 31 L42 28 L46 28 Z" fill={isHighContrast ? '#FFFFFF' : '#38BDF8'} stroke={strokeColor} strokeWidth={1} />
+            <circle cx="54" cy="14" r="2" fill={isHighContrast ? '#FFFFFF' : '#60A5FA'} />
+            <circle cx="20" cy="18" r="1.5" fill={isHighContrast ? '#FACC15' : '#F59E0B'} />
+          </g>
+        );
+
+      case 'meal':
+        return (
+          <g>
+            {/* Plate */}
+            <ellipse cx="32" cy="36" rx="20" ry="14" fill={isHighContrast ? '#1E293B' : '#FFFFFF'} stroke={strokeColor} strokeWidth={strokeWidth} />
+            <ellipse cx="32" cy="36" rx="14" ry="9" fill={isHighContrast ? '#0F172A' : '#EFF6FF'} stroke={strokeColor} strokeWidth={1.5} />
+            {/* Fork */}
+            <path d="M8 24 V44 M6 24 V30 H10 V24" stroke={isHighContrast ? '#FACC15' : '#1E40AF'} strokeWidth={strokeWidth} strokeLinecap="round" strokeLinejoin="round" fill="none" />
+            {/* Knife */}
+            <path d="M56 24 V44 C56 44 54 36 54 30 V24 Z" fill={isHighContrast ? '#FACC15' : '#1E40AF'} stroke={strokeColor} strokeWidth={1.5} />
+            {/* Cloche steam */}
+            <path d="M28 18 Q32 12 36 18" fill="none" stroke={isHighContrast ? '#FACC15' : '#EA580C'} strokeWidth={2} strokeLinecap="round" />
+          </g>
+        );
+
+      case 'plane':
+        return (
+          <g>
+            {/* Airplane */}
+            <path d="M8 34 L32 30 L48 14 L52 16 L42 30 L56 32 L58 26 L60 27 L58 35 L48 36 L12 40 C8 40 6 38 8 34 Z" fill={isHighContrast ? '#0284C7' : '#38BDF8'} stroke={strokeColor} strokeWidth={strokeWidth} strokeLinejoin="round" />
+            {/* Lower wing */}
+            <path d="M26 34 L18 48 L22 50 L32 36" fill={isHighContrast ? '#0369A1' : '#0284C7'} stroke={strokeColor} strokeWidth={strokeWidth} strokeLinejoin="round" />
+            {/* Window dots */}
+            <circle cx="34" cy="32" r="1.5" fill="#FFFFFF" />
+            <circle cx="38" cy="31" r="1.5" fill="#FFFFFF" />
+            <circle cx="42" cy="30" r="1.5" fill="#FFFFFF" />
+          </g>
+        );
+
+      case 'car':
+        return (
+          <g>
+            {/* Car body */}
+            <path d="M10 38 L14 26 C16 22 20 20 26 20 H40 C44 20 48 22 52 26 L56 38 H10 Z" fill={isHighContrast ? '#1E3A8A' : '#3B82F6'} stroke={strokeColor} strokeWidth={strokeWidth} />
+            <rect x="6" y="36" width="52" height="12" rx="4" fill={isHighContrast ? '#3B82F6' : '#60A5FA'} stroke={strokeColor} strokeWidth={strokeWidth} />
+            {/* Windows */}
+            <polygon points="18,26 28,26 28,34 16,34" fill={isHighContrast ? '#FACC15' : '#EFF6FF'} stroke={strokeColor} strokeWidth={1.5} />
+            <polygon points="32,26 44,26 48,34 32,34" fill={isHighContrast ? '#FACC15' : '#EFF6FF'} stroke={strokeColor} strokeWidth={1.5} />
+            {/* Wheels */}
+            <circle cx="18" cy="48" r="6" fill="#1E293B" stroke={strokeColor} strokeWidth={strokeWidth} />
+            <circle cx="18" cy="48" r="2.5" fill="#FFFFFF" />
+            <circle cx="46" cy="48" r="6" fill="#1E293B" stroke={strokeColor} strokeWidth={strokeWidth} />
+            <circle cx="46" cy="48" r="2.5" fill="#FFFFFF" />
+          </g>
+        );
+
+      case 'bus':
+        return (
+          <g>
+            {/* Bus body */}
+            <rect x="14" y="14" width="36" height="36" rx="6" fill={isHighContrast ? '#D97706' : '#FBBF24'} stroke={strokeColor} strokeWidth={strokeWidth} />
+            {/* Windscreen */}
+            <rect x="18" y="20" width="28" height="14" rx="2" fill={isHighContrast ? '#1E293B' : '#E0F2FE'} stroke={strokeColor} strokeWidth={1.5} />
+            {/* Headlights */}
+            <circle cx="20" cy="42" r="3" fill={isHighContrast ? '#FACC15' : '#FEF08A'} stroke={strokeColor} strokeWidth={1.5} />
+            <circle cx="44" cy="42" r="3" fill={isHighContrast ? '#FACC15' : '#FEF08A'} stroke={strokeColor} strokeWidth={1.5} />
+            {/* Grille */}
+            <line x1="28" y1="42" x2="36" y2="42" stroke={strokeColor} strokeWidth={2} strokeLinecap="round" />
+            {/* Wheels */}
+            <rect x="16" y="50" width="8" height="4" rx="2" fill="#1E293B" stroke={strokeColor} strokeWidth={1.5} />
+            <rect x="40" y="50" width="8" height="4" rx="2" fill="#1E293B" stroke={strokeColor} strokeWidth={1.5} />
+          </g>
+        );
+
+      case 'walk':
+        return (
+          <g>
+            {/* Head */}
+            <circle cx="34" cy="14" r="5" fill={isHighContrast ? '#FACC15' : '#3B82F6'} stroke={strokeColor} strokeWidth={strokeWidth} />
+            {/* Body */}
+            <path d="M34 20 L30 34 L22 46 M30 34 L38 48 M28 24 L22 30 M32 24 L40 28" stroke={strokeColor} strokeWidth={strokeWidth + 0.5} strokeLinecap="round" strokeLinejoin="round" fill="none" />
+            {/* Walking Stick / Ground line */}
+            <path d="M12 56 H52" stroke={isHighContrast ? '#64748B' : '#94A3B8'} strokeWidth={strokeWidth} strokeLinecap="round" />
+          </g>
+        );
+
+      case 'shop':
+        return (
+          <g>
+            {/* Building */}
+            <rect x="12" y="24" width="40" height="30" rx="2" fill={isHighContrast ? '#1E293B' : '#F1F5F9'} stroke={strokeColor} strokeWidth={strokeWidth} />
+            {/* Awning stripes */}
+            <path d="M10 16 H54 L50 26 H14 Z" fill={isHighContrast ? '#DC2626' : '#EF4444'} stroke={strokeColor} strokeWidth={strokeWidth} strokeLinejoin="round" />
+            <path d="M22 16 L20 26 M32 16 L32 26 M42 16 L44 26" stroke="#FFFFFF" strokeWidth={2} />
+            {/* Door & Window */}
+            <rect x="16" y="34" width="14" height="20" rx="1" fill={isHighContrast ? '#0F172A' : '#E2E8F0'} stroke={strokeColor} strokeWidth={1.5} />
+            <rect x="34" y="34" width="14" height="12" rx="1" fill={isHighContrast ? '#FACC15' : '#BAE6FD'} stroke={strokeColor} strokeWidth={1.5} />
+          </g>
+        );
+
+      case 'park':
+        return (
+          <g>
+            {/* Big Green Tree */}
+            <circle cx="28" cy="22" r="14" fill={isHighContrast ? '#065F46' : '#22C55E'} stroke={strokeColor} strokeWidth={strokeWidth} />
+            <circle cx="38" cy="26" r="12" fill={isHighContrast ? '#047857' : '#16A34A'} stroke={strokeColor} strokeWidth={strokeWidth} />
+            {/* Trunk */}
+            <rect x="30" y="34" width="6" height="18" rx="1" fill={isHighContrast ? '#78350F' : '#92400E'} stroke={strokeColor} strokeWidth={strokeWidth} />
+            {/* Bench */}
+            <rect x="10" y="46" width="16" height="4" rx="1" fill={isHighContrast ? '#FACC15' : '#F59E0B'} stroke={strokeColor} strokeWidth={1.5} />
+            <line x1="12" y1="50" x2="12" y2="54" stroke={strokeColor} strokeWidth={1.5} />
+            <line x1="24" y1="50" x2="24" y2="54" stroke={strokeColor} strokeWidth={1.5} />
+          </g>
+        );
+
+      case 'taxi':
+        return (
+          <g>
+            {/* TAXI Car body in classic yellow */}
+            <path d="M12 36 L16 26 C18 22 22 20 28 20 H38 C42 20 46 22 50 26 L54 36 H12 Z" fill={isHighContrast ? '#CA8A04' : '#FACC15'} stroke={strokeColor} strokeWidth={strokeWidth} />
+            <rect x="8" y="34" width="50" height="12" rx="4" fill={isHighContrast ? '#EAB308' : '#FDE047'} stroke={strokeColor} strokeWidth={strokeWidth} />
+            {/* TAXI Roof sign */}
+            <rect x="24" y="14" width="18" height="6" rx="2" fill="#FFFFFF" stroke={strokeColor} strokeWidth={1.5} />
+            <text x="33" y="19" textAnchor="middle" fontSize="5" fontWeight="900" fill="#000000">TAXI</text>
+            {/* Wheels */}
+            <circle cx="18" cy="46" r="6" fill="#1E293B" stroke={strokeColor} strokeWidth={strokeWidth} />
+            <circle cx="18" cy="46" r="2.5" fill="#FFFFFF" />
+            <circle cx="48" cy="46" r="6" fill="#1E293B" stroke={strokeColor} strokeWidth={strokeWidth} />
+            <circle cx="48" cy="46" r="2.5" fill="#FFFFFF" />
+          </g>
+        );
+
+      case 'metro':
+        return (
+          <g>
+            {/* Tunnel Arch */}
+            <path d="M12 50 V26 C12 14 20 8 32 8 C44 8 52 14 52 26 V50" fill={isHighContrast ? '#1E293B' : '#E2E8F0'} stroke={strokeColor} strokeWidth={strokeWidth} />
+            {/* Metro train front */}
+            <rect x="18" y="20" width="28" height="30" rx="4" fill={isHighContrast ? '#DC2626' : '#EF4444'} stroke={strokeColor} strokeWidth={strokeWidth} />
+            <rect x="22" y="24" width="20" height="12" rx="2" fill={isHighContrast ? '#FFFFFF' : '#BAE6FD'} stroke={strokeColor} strokeWidth={1.5} />
+            {/* Metro M icon */}
+            <circle cx="32" cy="42" r="4" fill="#FFFFFF" stroke={strokeColor} strokeWidth={1} />
+            <path d="M30 44 V40 L32 42 L34 40 V44" fill="none" stroke="#DC2626" strokeWidth={1} strokeLinecap="round" strokeLinejoin="round" />
+            {/* Track */}
+            <line x1="8" y1="52" x2="56" y2="52" stroke={strokeColor} strokeWidth={2} strokeLinecap="round" />
+          </g>
+        );
+
+      case 'ship':
+        return (
+          <g>
+            {/* Ship Hull */}
+            <path d="M10 38 L16 50 H48 L56 38 Z" fill={isHighContrast ? '#1E3A8A' : '#2563EB'} stroke={strokeColor} strokeWidth={strokeWidth} strokeLinejoin="round" />
+            {/* Cabin */}
+            <rect x="20" y="26" width="24" height="12" rx="2" fill={isHighContrast ? '#FACC15' : '#FFFFFF'} stroke={strokeColor} strokeWidth={strokeWidth} />
+            <rect x="30" y="18" width="6" height="8" rx="1" fill="#DC2626" stroke={strokeColor} strokeWidth={1.5} />
+            {/* Windows */}
+            <circle cx="26" cy="32" r="2" fill="#0284C7" />
+            <circle cx="32" cy="32" r="2" fill="#0284C7" />
+            <circle cx="38" cy="32" r="2" fill="#0284C7" />
+            {/* Water waves */}
+            <path d="M6 54 Q14 50 22 54 T38 54 T54 54" fill="none" stroke={isHighContrast ? '#38BDF8' : '#0284C7'} strokeWidth={strokeWidth + 0.5} strokeLinecap="round" />
+          </g>
+        );
+
+      case 'restaurant':
+        return (
+          <g>
+            {/* Dining Table with tablecloth */}
+            <path d="M14 36 H50 L46 54 H18 Z" fill={isHighContrast ? '#1E293B' : '#EFF6FF'} stroke={strokeColor} strokeWidth={strokeWidth} />
+            {/* Cloche cover */}
+            <path d="M22 36 C22 24 42 24 42 36 Z" fill={isHighContrast ? '#CA8A04' : '#F59E0B'} stroke={strokeColor} strokeWidth={strokeWidth} />
+            <circle cx="32" cy="22" r="2.5" fill={isHighContrast ? '#FACC15' : '#D97706'} stroke={strokeColor} strokeWidth={1} />
+            {/* Wine glass */}
+            <path d="M12 22 H18 L15 28 V34 M13 34 H17" fill="none" stroke={isHighContrast ? '#DC2626' : '#EF4444'} strokeWidth={1.5} strokeLinecap="round" />
+            {/* Fork on right */}
+            <path d="M52 22 V34 M50 22 V26 H54 V22" fill="none" stroke={strokeColor} strokeWidth={1.5} strokeLinecap="round" />
+          </g>
+        );
+
+      case 'mall':
+        return (
+          <g>
+            {/* Shopping Center Mall Building */}
+            <rect x="12" y="18" width="40" height="36" rx="3" fill={isHighContrast ? '#1E293B' : '#F8FAFC'} stroke={strokeColor} strokeWidth={strokeWidth} />
+            {/* Glass Entrance dome */}
+            <path d="M24 38 C24 30 40 30 40 38 V54 H24 Z" fill={isHighContrast ? '#0284C7' : '#BAE6FD'} stroke={strokeColor} strokeWidth={1.5} />
+            {/* Glass windows grid */}
+            <rect x="16" y="24" width="8" height="8" rx="1" fill={isHighContrast ? '#FACC15' : '#E2E8F0'} stroke={strokeColor} strokeWidth={1} />
+            <rect x="40" y="24" width="8" height="8" rx="1" fill={isHighContrast ? '#FACC15' : '#E2E8F0'} stroke={strokeColor} strokeWidth={1} />
+            {/* Shopping bag tag */}
+            <rect x="28" y="10" width="8" height="6" rx="1" fill="#EF4444" stroke={strokeColor} strokeWidth={1} />
+          </g>
+        );
+
+      case 'parking':
+        return (
+          <g>
+            {/* Classic Blue Parking Sign */}
+            <rect x="12" y="10" width="40" height="40" rx="8" fill={isHighContrast ? '#1D4ED8' : '#2563EB'} stroke={strokeColor} strokeWidth={strokeWidth} />
+            {/* Bold white letter P */}
+            <path d="M26 42 V18 H36 C42 18 42 28 36 28 H26" fill="none" stroke="#FFFFFF" strokeWidth={strokeWidth + 2} strokeLinecap="round" strokeLinejoin="round" />
+            {/* Pole */}
+            <line x1="32" y1="50" x2="32" y2="58" stroke={strokeColor} strokeWidth={strokeWidth} strokeLinecap="round" />
+          </g>
+        );
+
+      case 'groceries':
+        return (
+          <g>
+            {/* Grocery Paper Bag */}
+            <path d="M16 26 L20 54 H44 L48 26 Z" fill={isHighContrast ? '#78350F' : '#D97706'} stroke={strokeColor} strokeWidth={strokeWidth} strokeLinejoin="round" />
+            {/* Bag fold lines */}
+            <path d="M20 26 L32 32 L44 26" fill="none" stroke={strokeColor} strokeWidth={1.5} />
+            {/* Baguette & Apple sticking out */}
+            <rect x="22" y="12" width="6" height="18" rx="3" transform="rotate(-15 22 12)" fill={isHighContrast ? '#FACC15' : '#FDE047'} stroke={strokeColor} strokeWidth={1.5} />
+            <circle cx="38" cy="20" r="6" fill="#EF4444" stroke={strokeColor} strokeWidth={1.5} />
+            <path d="M38 14 C38 11 40 10 42 10" fill="none" stroke="#16A34A" strokeWidth={1.5} strokeLinecap="round" />
+          </g>
+        );
+
+      case 'clothes':
+        return (
+          <g>
+            {/* Hanger Hook */}
+            <path d="M32 14 C32 10 36 10 36 14 C36 17 32 18 32 20" fill="none" stroke={strokeColor} strokeWidth={strokeWidth} strokeLinecap="round" />
+            {/* Hanger triangle */}
+            <path d="M16 28 L32 20 L48 28 Z" fill="none" stroke={strokeColor} strokeWidth={strokeWidth} strokeLinejoin="round" />
+            {/* Shirt */}
+            <path d="M18 28 L10 34 L14 40 L18 36 V54 H46 V36 L50 40 L54 34 L46 28 Z" fill={isHighContrast ? '#0369A1' : '#38BDF8'} stroke={strokeColor} strokeWidth={strokeWidth} strokeLinejoin="round" />
+            {/* Collar */}
+            <path d="M26 28 L32 34 L38 28" fill="none" stroke={strokeColor} strokeWidth={1.5} />
+          </g>
+        );
+
+      case 'shoes':
+        return (
+          <g>
+            {/* Comfortable walking shoe */}
+            <path d="M10 40 C10 32 18 28 26 28 L34 32 L44 34 C50 34 54 38 54 44 H10 Z" fill={isHighContrast ? '#1E293B' : '#3B82F6'} stroke={strokeColor} strokeWidth={strokeWidth} strokeLinejoin="round" />
+            {/* Sole */}
+            <rect x="8" y="44" width="48" height="8" rx="3" fill={isHighContrast ? '#FACC15' : '#FFFFFF'} stroke={strokeColor} strokeWidth={strokeWidth} />
+            {/* Laces */}
+            <line x1="28" y1="30" x2="34" y2="34" stroke="#FFFFFF" strokeWidth={2} strokeLinecap="round" />
+            <line x1="26" y1="34" x2="32" y2="38" stroke="#FFFFFF" strokeWidth={2} strokeLinecap="round" />
+          </g>
+        );
+
+      case 'cake':
+        return (
+          <g>
+            {/* Slice of cake */}
+            <path d="M12 44 L44 22 V38 L12 50 Z" fill={isHighContrast ? '#9333EA' : '#C084FC'} stroke={strokeColor} strokeWidth={strokeWidth} strokeLinejoin="round" />
+            <polygon points="12,44 44,22 52,26 20,48" fill={isHighContrast ? '#CA8A04' : '#FDE047'} stroke={strokeColor} strokeWidth={1.5} />
+            {/* Cream layer */}
+            <line x1="12" y1="47" x2="44" y2="35" stroke="#FFFFFF" strokeWidth={2} strokeLinecap="round" />
+            {/* Cherry on top */}
+            <circle cx="44" cy="20" r="4" fill="#DC2626" stroke={strokeColor} strokeWidth={1.5} />
+            <path d="M44 16 Q48 10 52 12" fill="none" stroke="#16A34A" strokeWidth={1.5} strokeLinecap="round" />
+          </g>
+        );
+
+      case 'softdrink':
+        return (
+          <g>
+            {/* Tall beverage glass */}
+            <path d="M20 18 L24 52 H40 L44 18 Z" fill={isHighContrast ? '#DC2626' : '#F87171'} stroke={strokeColor} strokeWidth={strokeWidth} strokeLinejoin="round" />
+            {/* Liquid wave */}
+            <path d="M22 28 Q32 30 42 28" fill="none" stroke="#FFFFFF" strokeWidth={1.5} />
+            {/* Striped Straw */}
+            <path d="M36 10 L30 36" stroke={strokeColor} strokeWidth={strokeWidth} strokeLinecap="round" />
+            <path d="M36 10 L42 6" stroke={strokeColor} strokeWidth={strokeWidth} strokeLinecap="round" />
+            {/* Lemon slice */}
+            <circle cx="20" cy="18" r="6" fill={isHighContrast ? '#FACC15' : '#FDE047'} stroke={strokeColor} strokeWidth={1.5} />
+          </g>
+        );
+
+      case 'elevator':
+        return (
+          <g>
+            {/* Elevator door frame */}
+            <rect x="14" y="10" width="36" height="44" rx="3" fill={isHighContrast ? '#1E293B' : '#E2E8F0'} stroke={strokeColor} strokeWidth={strokeWidth} />
+            {/* Double doors center line */}
+            <line x1="32" y1="18" x2="32" y2="54" stroke={strokeColor} strokeWidth={strokeWidth} />
+            {/* Door panels */}
+            <rect x="18" y="24" width="10" height="26" fill={isHighContrast ? '#0F172A' : '#F1F5F9'} stroke={strokeColor} strokeWidth={1} />
+            <rect x="36" y="24" width="10" height="26" fill={isHighContrast ? '#0F172A' : '#F1F5F9'} stroke={strokeColor} strokeWidth={1} />
+            {/* Up/Down arrow indicators */}
+            <polygon points="26,14 29,18 23,18" fill={isHighContrast ? '#22C55E' : '#16A34A'} />
+            <polygon points="38,18 41,14 35,14" fill={isHighContrast ? '#EF4444' : '#DC2626'} />
+          </g>
+        );
+
+      case 'mineralwater':
+        return (
+          <g>
+            {/* Bottle body */}
+            <path d="M26 18 V12 H38 V18 L42 24 V50 C42 52 40 54 38 54 H26 C24 54 22 52 22 50 V24 Z" fill={isHighContrast ? '#0369A1' : '#E0F2FE'} stroke={strokeColor} strokeWidth={strokeWidth} strokeLinejoin="round" />
+            {/* Bottle label */}
+            <rect x="22" y="30" width="20" height="12" fill={isHighContrast ? '#0284C7' : '#38BDF8'} stroke={strokeColor} strokeWidth={1.5} />
+            {/* Effervescent bubbles */}
+            <circle cx="30" cy="46" r="1.5" fill="#FFFFFF" />
+            <circle cx="34" cy="48" r="2" fill="#FFFFFF" />
+            <circle cx="32" cy="22" r="1.5" fill="#FFFFFF" />
+            {/* Bottle cap */}
+            <rect x="28" y="8" width="8" height="4" rx="1" fill="#2563EB" stroke={strokeColor} strokeWidth={1} />
+          </g>
+        );
+
       default:
         return (
           <circle cx="32" cy="32" r="20" fill={isHighContrast ? '#333333' : '#E2E8F0'} stroke={strokeColor} strokeWidth={strokeWidth} />

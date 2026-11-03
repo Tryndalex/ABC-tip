@@ -7,46 +7,7 @@ export interface EnglishWord {
   explanation: string;
   exampleSentenceEn?: string;
   exampleSentenceSk?: string;
-  iconType: 
-    | 'login' 
-    | 'password' 
-    | 'download' 
-    | 'settings' 
-    | 'search' 
-    | 'delete' 
-    | 'wifi' 
-    | 'cancel' 
-    | 'save' 
-    | 'click'
-    | 'hello' 
-    | 'morning' 
-    | 'please' 
-    | 'thankyou' 
-    | 'welcome' 
-    | 'yesno' 
-    | 'excuse' 
-    | 'goodbye'
-    | 'airport' 
-    | 'passport' 
-    | 'hotel' 
-    | 'ticket' 
-    | 'help' 
-    | 'exit' 
-    | 'water' 
-    | 'info'
-    | 'doctor' 
-    | 'pharmacy' 
-    | 'medicine' 
-    | 'hospital' 
-    | 'pain' 
-    | 'emergency'
-    | 'openclose' 
-    | 'price' 
-    | 'cashcard' 
-    | 'coffee' 
-    | 'tea' 
-    | 'bread' 
-    | 'receipt';
+  iconType: string;
 }
 
 export interface EnglishCategory {
@@ -304,6 +265,28 @@ export const ENGLISH_WORDS: EnglishWord[] = [
     exampleSentenceSk: 'Dovidenia, vidíme sa zajtra!',
     iconType: 'goodbye'
   },
+  {
+    id: 'w-goodnight',
+    category: 'basics',
+    english: 'Good night',
+    phoneticSk: 'gud nájt',
+    slovak: 'Dobrú noc',
+    explanation: 'Priateľské prianie pokojného spánku večer pred spaním.',
+    exampleSentenceEn: 'Good night, sleep well!',
+    exampleSentenceSk: 'Dobrú noc, dobre sa vyspite!',
+    iconType: 'goodnight'
+  },
+  {
+    id: 'w-meal',
+    category: 'basics',
+    english: 'Enjoy your meal',
+    phoneticSk: 'en-džoj jór mííl',
+    slovak: 'Dobrú chuť',
+    explanation: 'Zdvorilé zaželanie príjemného jedenia pri stole alebo v reštaurácii.',
+    exampleSentenceEn: 'Enjoy your meal everyone!',
+    exampleSentenceSk: 'Dobrú chuť všetkým!',
+    iconType: 'meal'
+  },
 
   // --- Cestovanie, letisko a hotel ---
   {
@@ -393,6 +376,127 @@ export const ENGLISH_WORDS: EnglishWord[] = [
     exampleSentenceEn: 'Information desk is on the left.',
     exampleSentenceSk: 'Informačný pult je naľavo.',
     iconType: 'info'
+  },
+  {
+    id: 'w-plane',
+    category: 'travel',
+    english: 'Plane / Airplane',
+    phoneticSk: 'plejn / ér-plejn',
+    slovak: 'Lietadlo',
+    explanation: 'Dopravné lietadlo na pohodlné a rýchle cestovanie na dovolenku či za rodinou.',
+    exampleSentenceEn: 'Our plane departs at noon.',
+    exampleSentenceSk: 'Naše lietadlo odlieta na poludnie.',
+    iconType: 'plane'
+  },
+  {
+    id: 'w-car',
+    category: 'travel',
+    english: 'Car',
+    phoneticSk: 'kár',
+    slovak: 'Auto / Vozidlo',
+    explanation: 'Osobné auto na cestovanie po cestách alebo požičanie v požičovni.',
+    exampleSentenceEn: 'We rented a car for the trip.',
+    exampleSentenceSk: 'Požičali sme si auto na výlet.',
+    iconType: 'car'
+  },
+  {
+    id: 'w-bus',
+    category: 'travel',
+    english: 'Bus',
+    phoneticSk: 'bas',
+    slovak: 'Autobus',
+    explanation: 'Mestský alebo diaľkový autobus s označenými zastávkami (Bus stop).',
+    exampleSentenceEn: 'Where is the nearest bus stop?',
+    exampleSentenceSk: 'Kde je najbližšia autobusová zastávka?',
+    iconType: 'bus'
+  },
+  {
+    id: 'w-walk',
+    category: 'travel',
+    english: 'Walk',
+    phoneticSk: 'vók',
+    slovak: 'Kráčať / Ísť pešo',
+    explanation: 'Pohyb pešo, príjemná prechádzka po pešej zóne alebo meste.',
+    exampleSentenceEn: 'We can walk to the beach.',
+    exampleSentenceSk: 'Na pláž môžeme ísť pešo.',
+    iconType: 'walk'
+  },
+  {
+    id: 'w-travel-shop',
+    category: 'travel',
+    english: 'Shop / Store',
+    phoneticSk: 'šop / stór',
+    slovak: 'Obchod / Predajňa',
+    explanation: 'Miesto, kde si počas cestovania kúpite suveníry, mapu alebo drobnosti.',
+    exampleSentenceEn: 'Is the souvenir shop open?',
+    exampleSentenceSk: 'Je obchod so suvenírmi otvorený?',
+    iconType: 'shop'
+  },
+  {
+    id: 'w-park',
+    category: 'travel',
+    english: 'Park',
+    phoneticSk: 'párk',
+    slovak: 'Park / Zelená zóna',
+    explanation: 'Mestský park so stromami, kvetmi a lavičkami na príjemný oddych.',
+    exampleSentenceEn: 'Let us rest in the park.',
+    exampleSentenceSk: 'Oddýchnime si v parku.',
+    iconType: 'park'
+  },
+  {
+    id: 'w-travel-hospital',
+    category: 'travel',
+    english: 'Hospital',
+    phoneticSk: 'hos-pi-tl',
+    slovak: 'Nemocnica',
+    explanation: 'Zdravotnícke zariadenie a pohotovosť pri úraze alebo náhlej nevoľnosti na cestách.',
+    exampleSentenceEn: 'Where is the nearest hospital?',
+    exampleSentenceSk: 'Kde je najbližšia nemocnica?',
+    iconType: 'hospital'
+  },
+  {
+    id: 'w-travel-pharmacy',
+    category: 'travel',
+    english: 'Pharmacy',
+    phoneticSk: 'fár-ma-si',
+    slovak: 'Lekáreň',
+    explanation: 'Predajňa so zeleným krížom na nákup liekov, náplastí alebo vitamínov na dovolenke.',
+    exampleSentenceEn: 'I need to find a pharmacy.',
+    exampleSentenceSk: 'Potrebujem nájsť lekáreň.',
+    iconType: 'pharmacy'
+  },
+  {
+    id: 'w-taxi',
+    category: 'travel',
+    english: 'Taxi',
+    phoneticSk: 'tek-si',
+    slovak: 'Taxík',
+    explanation: 'Osobné auto s označením TAXI na streche, ktoré vás odvezie priamo k dverám hotela.',
+    exampleSentenceEn: 'Call a taxi for me, please.',
+    exampleSentenceSk: 'Zavolajte mi taxík, prosím.',
+    iconType: 'taxi'
+  },
+  {
+    id: 'w-metro',
+    category: 'travel',
+    english: 'Metro / Subway',
+    phoneticSk: 'met-rou / sab-vej',
+    slovak: 'Metro / Podzemná dráha',
+    explanation: 'Rýchly podzemný vlak vo veľkých mestách so stanicami označenými písmenom M.',
+    exampleSentenceEn: 'The metro station is near the hotel.',
+    exampleSentenceSk: 'Stanica metra je blízko hotela.',
+    iconType: 'metro'
+  },
+  {
+    id: 'w-ship',
+    category: 'travel',
+    english: 'Ship / Boat',
+    phoneticSk: 'šip / bóut',
+    slovak: 'Loď / Trajekt',
+    explanation: 'Plavidlo na vyhliadkovú plavbu po rieke, jazere alebo prepravu trajektom cez more.',
+    exampleSentenceEn: 'We take a boat tour today.',
+    exampleSentenceSk: 'Dnes ideme na vyhliadkovú plavbu loďou.',
+    iconType: 'ship'
   },
 
   // --- Zdravie, lekáreň a núdza ---
@@ -540,5 +644,126 @@ export const ENGLISH_WORDS: EnglishWord[] = [
     exampleSentenceEn: 'Here is your receipt and change.',
     exampleSentenceSk: 'Tu je vaša účtenka a vydané peniaze.',
     iconType: 'receipt'
+  },
+  {
+    id: 'w-restaurant',
+    category: 'shopping',
+    english: 'Restaurant',
+    phoneticSk: 'res-to-rant',
+    slovak: 'Reštaurácia',
+    explanation: 'Podnik s posedením, kde varia teplé obedy a večere s obsluhou.',
+    exampleSentenceEn: 'A table for two, please.',
+    exampleSentenceSk: 'Stôl pre dvoch, prosím.',
+    iconType: 'restaurant'
+  },
+  {
+    id: 'w-shop',
+    category: 'shopping',
+    english: 'Shop / Store',
+    phoneticSk: 'šop / stór',
+    slovak: 'Obchod / Predajňa',
+    explanation: 'Miesto na nákup tovaru, drogérie, spomienkových predmetov a darčekov.',
+    exampleSentenceEn: 'The shop is open every day.',
+    exampleSentenceSk: 'Obchod je otvorený každý deň.',
+    iconType: 'shop'
+  },
+  {
+    id: 'w-mall',
+    category: 'shopping',
+    english: 'Shopping Center / Mall',
+    phoneticSk: 'šo-ping sen-tr / mól',
+    slovak: 'Nákupné centrum / Obchodný dom',
+    explanation: 'Veľká budova s desiatkami obchodov, kaviarňami a lavičkami pod jednou strechou.',
+    exampleSentenceEn: 'Let us meet at the shopping center.',
+    exampleSentenceSk: 'Stretnime sa v nákupnom centre.',
+    iconType: 'mall'
+  },
+  {
+    id: 'w-parking',
+    category: 'shopping',
+    english: 'Parking',
+    phoneticSk: 'pár-king',
+    slovak: 'Parkovisko / Garáž',
+    explanation: 'Vyhradené miesto označené veľkým modrým písmenom P pre autá.',
+    exampleSentenceEn: 'Parking is free for customers.',
+    exampleSentenceSk: 'Parkovanie je pre zákazníkov zadarmo.',
+    iconType: 'parking'
+  },
+  {
+    id: 'w-groceries',
+    category: 'shopping',
+    english: 'Groceries / Supermarket',
+    phoneticSk: 'grou-se-ríz / sú-pr-már-kit',
+    slovak: 'Potraviny / Supermarket',
+    explanation: 'Predajňa čerstvého chleba, mlieka, ovocia, zeleniny a každodenného jedla.',
+    exampleSentenceEn: 'I need to buy some groceries.',
+    exampleSentenceSk: 'Potrebujem nakúpiť potraviny.',
+    iconType: 'groceries'
+  },
+  {
+    id: 'w-clothes',
+    category: 'shopping',
+    english: 'Clothes',
+    phoneticSk: 'klóuz',
+    slovak: 'Oblečenie / Odev',
+    explanation: 'Košele, nohavice, svetre, šaty či teplé bundy v oddelení textilu.',
+    exampleSentenceEn: 'Where is the warm clothes section?',
+    exampleSentenceSk: 'Kde je oddelenie teplého oblečenia?',
+    iconType: 'clothes'
+  },
+  {
+    id: 'w-shoes',
+    category: 'shopping',
+    english: 'Shoes',
+    phoneticSk: 'šúúz',
+    slovak: 'Topánky / Obuv',
+    explanation: 'Pohodlná obuv na chôdzu, vychádzky po meste a do dažďa.',
+    exampleSentenceEn: 'These shoes are very comfortable.',
+    exampleSentenceSk: 'Tieto topánky sú veľmi pohodlné.',
+    iconType: 'shoes'
+  },
+  {
+    id: 'w-cake',
+    category: 'shopping',
+    english: 'Cake',
+    phoneticSk: 'kejk',
+    slovak: 'Koláčik / Zákusok',
+    explanation: 'Sladký dezert, kúsok torty alebo čerstvý koláčik k poobedňajšej kávičke.',
+    exampleSentenceEn: 'One piece of chocolate cake, please.',
+    exampleSentenceSk: 'Jeden kúsok čokoládového koláča, prosím.',
+    iconType: 'cake'
+  },
+  {
+    id: 'w-softdrink',
+    category: 'shopping',
+    english: 'Soft drink',
+    phoneticSk: 'soft drink',
+    slovak: 'Nealko nápoj',
+    explanation: 'Osviežujúci chladený nealkoholický nápoj (napr. limonáda, džús alebo cola).',
+    exampleSentenceEn: 'A cold soft drink with ice, please.',
+    exampleSentenceSk: 'Chladený nealko nápoj s ľadom, prosím.',
+    iconType: 'softdrink'
+  },
+  {
+    id: 'w-elevator',
+    category: 'shopping',
+    english: 'Elevator / Lift',
+    phoneticSk: 'e-le-vej-tr / lift',
+    slovak: 'Výťah',
+    explanation: 'Kabína na presun medzi poschodiami v obchodnom centre či hoteli šetriaca vaše nohy.',
+    exampleSentenceEn: 'Take the elevator to the first floor.',
+    exampleSentenceSk: 'Vyvezte sa výťahom na prvé poschodie.',
+    iconType: 'elevator'
+  },
+  {
+    id: 'w-mineralwater',
+    category: 'shopping',
+    english: 'Mineral water',
+    phoneticSk: 'mi-ne-rl vó-tr',
+    slovak: 'Minerálna voda / Minerálka',
+    explanation: 'Fľašková minerálna voda perlivá (sparkling) alebo tichá neperlivá (still).',
+    exampleSentenceEn: 'A bottle of sparkling mineral water, please.',
+    exampleSentenceSk: 'Fľašu perlivej minerálnej vody, prosím.',
+    iconType: 'mineralwater'
   }
 ];
