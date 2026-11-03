@@ -12,6 +12,7 @@ import { SmsSimulator } from './components/SmsSimulator';
 import { PharmacyChecklist } from './components/PharmacyChecklist';
 import { HelplineSection } from './components/HelplineSection';
 import { SeniorSurvey } from './components/SeniorSurvey';
+import { EnglishCourse } from './components/EnglishCourse';
 import { Footer } from './components/Footer';
 import {
   BookOpen,
@@ -24,7 +25,8 @@ import {
   HelpCircle,
   Smartphone,
   ChevronRight,
-  Check
+  Check,
+  Languages
 } from 'lucide-react';
 
 export default function App() {
@@ -41,8 +43,8 @@ export default function App() {
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [selectedCategory, setSelectedCategory] = useState<CategoryId>('all');
 
-  // Navigation tab: 'guides' | 'sms-practice' | 'pharmacy-checklist' | 'helplines'
-  const [activeTab, setActiveTab] = useState<'guides' | 'sms-practice' | 'pharmacy-checklist' | 'helplines'>('guides');
+  // Navigation tab: 'guides' | 'sms-practice' | 'pharmacy-checklist' | 'helplines' | 'english-course'
+  const [activeTab, setActiveTab] = useState<'guides' | 'sms-practice' | 'pharmacy-checklist' | 'helplines' | 'english-course'>('guides');
 
   // Active guide in full detail view / modal
   const [selectedGuide, setSelectedGuide] = useState<Guide | null>(null);
@@ -151,6 +153,11 @@ export default function App() {
       return items;
     }
 
+    if (activeTab === 'english-course') {
+      items.push({ label: 'Kurz angličtiny pre seniorov', active: true });
+      return items;
+    }
+
     if (selectedCategory !== 'all') {
       const catObj = CATEGORIES.find(c => c.id === selectedCategory);
       items.push({
@@ -247,6 +254,20 @@ export default function App() {
                   <Smartphone className="w-6 h-6 text-[#006A61]" />
                   <span>Vyskúšať cvičnú zónu</span>
                 </button>
+
+                <button
+                  type="button"
+                  onClick={() => setActiveTab('english-course')}
+                  className={`min-h-[54px] px-7 py-3.5 rounded-xl font-bold text-lg sm:text-xl flex items-center justify-center gap-3 border-2 transition-all active:translate-y-[1px] cursor-pointer ${
+                    isHighContrast
+                      ? 'bg-yellow-400 text-black border-2 border-black'
+                      : 'bg-gradient-to-r from-[#EFF6FF] to-[#F0FDFA] hover:from-[#DBEAFE] hover:to-[#CCFBF1] text-[#00288E] border-[#1E40AF] shadow-xs'
+                  }`}
+                  aria-label="Prejsť na ľahký kurz angličtiny pre seniorov"
+                >
+                  <Languages className="w-6 h-6 text-[#006A61]" />
+                  <span>Kurz angličtiny pre seniorov</span>
+                </button>
               </div>
             </div>
           </section>
@@ -274,6 +295,25 @@ export default function App() {
           >
             <BookOpen className="w-6 h-6" />
             <span>Návody a odpovede ({GUIDES.length})</span>
+          </button>
+
+          <button
+            type="button"
+            onClick={() => {
+              setActiveTab('english-course');
+              setSelectedGuide(null);
+            }}
+            className={`min-h-[54px] px-6 py-3 rounded-xl font-bold text-lg sm:text-xl flex items-center gap-2.5 border-2 transition-all cursor-pointer ${
+              activeTab === 'english-course'
+                ? isHighContrast
+                  ? 'bg-black text-yellow-300 border-black ring-2 ring-yellow-400'
+                  : 'bg-[#1E40AF] text-white border-[#00288E] shadow-sm'
+                : 'bg-white text-[#131B2E] border-[#CBD5E1] hover:border-[#1E40AF]'
+            }`}
+            aria-current={activeTab === 'english-course' ? 'page' : undefined}
+          >
+            <Languages className="w-6 h-6 text-[#006A61]" />
+            <span>Kurz angličtiny</span>
           </button>
 
           <button
@@ -422,6 +462,13 @@ export default function App() {
             {/* Interactive Feedback & Suggestion Box */}
             <SeniorSurvey isHighContrast={isHighContrast} />
 
+          </section>
+        )}
+
+        {/* Tab Content: English Course for Seniors */}
+        {activeTab === 'english-course' && (
+          <section aria-label="Kurz angličtiny pre seniorov">
+            <EnglishCourse isHighContrast={isHighContrast} />
           </section>
         )}
 
