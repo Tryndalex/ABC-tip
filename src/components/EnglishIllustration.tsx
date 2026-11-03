@@ -745,6 +745,203 @@ export const EnglishIllustration: React.FC<EnglishIllustrationProps> = ({
           </g>
         );
 
+      case 'mildfever':
+        return (
+          <g>
+            {/* Thermometer glass body */}
+            <rect x="28" y="10" width="8" height="34" rx="4" fill="#FFFFFF" stroke={strokeColor} strokeWidth={strokeWidth} />
+            {/* Bottom reservoir bulb */}
+            <circle cx="32" cy="46" r="8" fill={isHighContrast ? '#F59E0B' : '#FBBF24'} stroke={strokeColor} strokeWidth={strokeWidth} />
+            {/* Medium amber mercury */}
+            <rect x="30" y="24" width="4" height="20" rx="2" fill={isHighContrast ? '#F59E0B' : '#FBBF24'} />
+            {/* Measurement lines */}
+            <line x1="39" y1="18" x2="43" y2="18" stroke={strokeColor} strokeWidth="1.5" strokeLinecap="round" />
+            <line x1="39" y1="24" x2="45" y2="24" stroke={strokeColor} strokeWidth="2" strokeLinecap="round" />
+            <line x1="39" y1="30" x2="43" y2="30" stroke={strokeColor} strokeWidth="1.5" strokeLinecap="round" />
+            {/* Moderate temperature readout */}
+            <text x="14" y="24" fontSize="9" fontWeight="bold" fill={isHighContrast ? '#FACC15' : '#D97706'}>37°</text>
+          </g>
+        );
+
+      case 'fever':
+        return (
+          <g>
+            {/* Thermometer glass body */}
+            <rect x="28" y="8" width="8" height="36" rx="4" fill="#FFFFFF" stroke={strokeColor} strokeWidth={strokeWidth} />
+            {/* Bottom red reservoir bulb */}
+            <circle cx="32" cy="46" r="8" fill={isHighContrast ? '#DC2626' : '#EF4444'} stroke={strokeColor} strokeWidth={strokeWidth} />
+            {/* High red mercury reaching near top */}
+            <rect x="30" y="14" width="4" height="30" rx="2" fill={isHighContrast ? '#DC2626' : '#EF4444'} />
+            {/* Measurement lines */}
+            <line x1="39" y1="14" x2="46" y2="14" stroke="#DC2626" strokeWidth="2.5" strokeLinecap="round" />
+            <line x1="39" y1="20" x2="44" y2="20" stroke={strokeColor} strokeWidth="1.5" strokeLinecap="round" />
+            <line x1="39" y1="26" x2="44" y2="26" stroke={strokeColor} strokeWidth="1.5" strokeLinecap="round" />
+            {/* Sweat / heat droplet */}
+            <path d="M16 26 C14 30 12 34 16 36 C20 34 18 30 16 26 Z" fill={isHighContrast ? '#38BDF8' : '#0284C7'} stroke={strokeColor} strokeWidth="1" />
+            {/* High temperature badge */}
+            <text x="12" y="18" fontSize="10" fontWeight="bold" fill={isHighContrast ? '#EF4444' : '#DC2626'}>39°</text>
+          </g>
+        );
+
+      case 'ae':
+        return (
+          <g>
+            {/* Red emergency banner badge */}
+            <rect x="8" y="12" width="48" height="40" rx="8" fill={isHighContrast ? '#991B1B' : '#DC2626'} stroke={strokeColor} strokeWidth={strokeWidth} />
+            {/* Medical cross top badge */}
+            <rect x="24" y="6" width="16" height="10" rx="2" fill={isHighContrast ? '#FACC15' : '#FEF08A'} stroke={strokeColor} strokeWidth="1.5" />
+            <path d="M28 11 H36 M32 8 V14" stroke="#DC2626" strokeWidth="2" strokeLinecap="round" />
+            {/* Big readable A&E text */}
+            <text x="32" y="38" textAnchor="middle" fontSize="15" fontWeight="900" fill="#FFFFFF" letterSpacing="1">A&E</text>
+          </g>
+        );
+
+      case 'ambulance':
+        return (
+          <g>
+            {/* Van body */}
+            <path d="M8 42 V26 C8 24 10 22 13 22 H36 L47 31 V42 Z" fill={isHighContrast ? '#1E293B' : '#FFFFFF'} stroke={strokeColor} strokeWidth={strokeWidth} strokeLinejoin="round" />
+            {/* Cab window */}
+            <path d="M36 25 H44 L44 32 H36 Z" fill={isHighContrast ? '#38BDF8' : '#BAE6FD'} stroke={strokeColor} strokeWidth="1.5" />
+            {/* Red medical cross on body */}
+            <path d="M21 28 H25 V24 H29 V28 H33 V32 H29 V36 H25 V32 H21 Z" fill={isHighContrast ? '#EF4444' : '#DC2626'} stroke={strokeColor} strokeWidth="1" strokeLinejoin="round" />
+            {/* Flashing blue beacon on top */}
+            <rect x="22" y="17" width="6" height="5" rx="1.5" fill={isHighContrast ? '#38BDF8' : '#2563EB'} stroke={strokeColor} strokeWidth="1" />
+            <line x1="20" y1="15" x2="16" y2="12" stroke="#38BDF8" strokeWidth="2" strokeLinecap="round" />
+            <line x1="30" y1="15" x2="34" y2="12" stroke="#38BDF8" strokeWidth="2" strokeLinecap="round" />
+            {/* Wheels */}
+            <circle cx="18" cy="44" r="5" fill="#334155" stroke={strokeColor} strokeWidth={strokeWidth} />
+            <circle cx="18" cy="44" r="2" fill="#94A3B8" />
+            <circle cx="39" cy="44" r="5" fill="#334155" stroke={strokeColor} strokeWidth={strokeWidth} />
+            <circle cx="39" cy="44" r="2" fill="#94A3B8" />
+          </g>
+        );
+
+      case 'fracture':
+        return (
+          <g>
+            {/* Bone shape with crack */}
+            {/* Left bone knobs */}
+            <circle cx="16" cy="25" r="5" fill={isHighContrast ? '#F1F5F9' : '#FFFFFF'} stroke={strokeColor} strokeWidth={strokeWidth} />
+            <circle cx="16" cy="39" r="5" fill={isHighContrast ? '#F1F5F9' : '#FFFFFF'} stroke={strokeColor} strokeWidth={strokeWidth} />
+            {/* Right bone knobs */}
+            <circle cx="48" cy="25" r="5" fill={isHighContrast ? '#F1F5F9' : '#FFFFFF'} stroke={strokeColor} strokeWidth={strokeWidth} />
+            <circle cx="48" cy="39" r="5" fill={isHighContrast ? '#F1F5F9' : '#FFFFFF'} stroke={strokeColor} strokeWidth={strokeWidth} />
+            {/* Bone shaft */}
+            <rect x="18" y="27" width="28" height="10" fill={isHighContrast ? '#F1F5F9' : '#FFFFFF'} stroke={strokeColor} strokeWidth={strokeWidth} />
+            {/* Fractured zigzag line in bright red */}
+            <path d="M30 20 L35 28 L28 35 L34 44" fill="none" stroke={isHighContrast ? '#EF4444' : '#DC2626'} strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+          </g>
+        );
+
+      case 'vomiting':
+        return (
+          <g>
+            {/* Queasy sick face */}
+            <circle cx="32" cy="28" r="18" fill={isHighContrast ? '#14532D' : '#DCFCE7'} stroke={strokeColor} strokeWidth={strokeWidth} />
+            {/* Queasy eyes (squinting crosses) */}
+            <path d="M22 23 L26 27 M26 23 L22 27" stroke={strokeColor} strokeWidth="2" strokeLinecap="round" />
+            <path d="M38 23 L42 27 M42 23 L38 27" stroke={strokeColor} strokeWidth="2" strokeLinecap="round" />
+            {/* Open mouth */}
+            <path d="M26 34 Q32 39 38 34" fill={strokeColor} stroke={strokeColor} strokeWidth="1.5" />
+            {/* Nausea drops */}
+            <path d="M32 38 C32 44 35 48 32 52 C29 48 32 44 32 38 Z" fill={isHighContrast ? '#22C55E' : '#16A34A'} stroke={strokeColor} strokeWidth="1.5" />
+            <circle cx="38" cy="46" r="2" fill={isHighContrast ? '#22C55E' : '#16A34A'} />
+          </g>
+        );
+
+      case 'head':
+        return (
+          <g>
+            {/* Head and neck profile/torso */}
+            <rect x="27" y="38" width="10" height="12" fill={isHighContrast ? '#1E293B' : '#FEF3C7'} stroke={strokeColor} strokeWidth={strokeWidth} />
+            <path d="M16 54 C16 48 24 46 27 46 H37 C40 46 48 48 48 54" fill={isHighContrast ? '#334155' : '#E2E8F0'} stroke={strokeColor} strokeWidth={strokeWidth} />
+            {/* Head circle */}
+            <circle cx="32" cy="26" r="14" fill={isHighContrast ? '#1E293B' : '#FEF3C7'} stroke={strokeColor} strokeWidth={strokeWidth} />
+            {/* Forehead sensation / focus waves */}
+            <path d="M12 20 Q14 26 12 32" stroke={isHighContrast ? '#FACC15' : '#F59E0B'} strokeWidth="2.5" fill="none" strokeLinecap="round" />
+            <path d="M52 20 Q50 26 52 32" stroke={isHighContrast ? '#FACC15' : '#F59E0B'} strokeWidth="2.5" fill="none" strokeLinecap="round" />
+            {/* Pain / pulse indicator on temple */}
+            <circle cx="38" cy="22" r="3" fill={isHighContrast ? '#EF4444' : '#DC2626'} />
+          </g>
+        );
+
+      case 'arm':
+        return (
+          <g>
+            {/* Arm with flexed elbow and open hand */}
+            <path d="M14 14 L22 36 L40 28 L46 22 L50 25 L43 32 L38 35 L20 44 L10 20 Z" fill={isHighContrast ? '#1E293B' : '#FED7AA'} stroke={strokeColor} strokeWidth={strokeWidth} strokeLinejoin="round" />
+            {/* Elbow joint circle */}
+            <circle cx="21" cy="40" r="3.5" fill={isHighContrast ? '#FACC15' : '#F59E0B'} stroke={strokeColor} strokeWidth="1" />
+            {/* Wrist / hand joint indicator */}
+            <circle cx="43" cy="29" r="2.5" fill={isHighContrast ? '#EF4444' : '#DC2626'} stroke={strokeColor} strokeWidth="1" />
+          </g>
+        );
+
+      case 'leg':
+        return (
+          <g>
+            {/* Leg silhouette from thigh down to foot */}
+            <path d="M25 10 L29 28 L28 44 L40 44 C43 44 45 47 45 50 C45 53 43 54 38 54 H22 C18 54 17 48 19 44 L20 28 L17 10 Z" fill={isHighContrast ? '#1E293B' : '#FED7AA'} stroke={strokeColor} strokeWidth={strokeWidth} strokeLinejoin="round" />
+            {/* Knee joint highlight circle */}
+            <circle cx="25" cy="28" r="4" fill={isHighContrast ? '#EF4444' : '#F87171'} stroke={strokeColor} strokeWidth="1.5" />
+            {/* Ankle highlight */}
+            <circle cx="24" cy="46" r="2.5" fill={isHighContrast ? '#FACC15' : '#F59E0B'} stroke={strokeColor} strokeWidth="1" />
+          </g>
+        );
+
+      case 'chest':
+        return (
+          <g>
+            {/* Upper torso / chest */}
+            <path d="M28 10 H36 V16 H28 Z" fill={isHighContrast ? '#1E293B' : '#E2E8F0'} stroke={strokeColor} strokeWidth={strokeWidth} />
+            <path d="M14 22 L28 16 H36 L50 22 L46 48 H18 Z" fill={isHighContrast ? '#1E293B' : '#E0E7FF'} stroke={strokeColor} strokeWidth={strokeWidth} strokeLinejoin="round" />
+            {/* Heart beat / ECG line across chest */}
+            <path d="M21 33 H27 L29 25 L33 40 L36 30 L38 35 H43" fill="none" stroke={isHighContrast ? '#EF4444' : '#DC2626'} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+          </g>
+        );
+
+      case 'stomach':
+        return (
+          <g>
+            {/* Abdomen / stomach organ silhouette */}
+            <path d="M26 12 V18" stroke={strokeColor} strokeWidth="3" strokeLinecap="round" />
+            <path d="M22 20 C28 14 42 16 42 26 C42 38 34 45 26 45 C19 45 17 37 21 28 C23 24 22 22 22 20 Z" fill={isHighContrast ? '#78350F' : '#FED7AA'} stroke={strokeColor} strokeWidth={strokeWidth} strokeLinejoin="round" />
+            <path d="M24 45 V50 H29" stroke={strokeColor} strokeWidth="3" strokeLinecap="round" />
+            {/* Stomach cramp / distress cross mark */}
+            <path d="M27 30 L35 36 M35 30 L27 36" stroke={isHighContrast ? '#EF4444' : '#DC2626'} strokeWidth="2.5" strokeLinecap="round" />
+          </g>
+        );
+
+      case 'diarrhea':
+        return (
+          <g>
+            {/* Abdomen rectangle with belly distress */}
+            <rect x="16" y="16" width="32" height="34" rx="8" fill={isHighContrast ? '#3F2C1D' : '#FEF3C7'} stroke={strokeColor} strokeWidth={strokeWidth} />
+            <circle cx="32" cy="25" r="2.5" fill={strokeColor} />
+            {/* Distress wavy cramp lines */}
+            <path d="M24 35 Q32 30 40 35" stroke={isHighContrast ? '#EF4444' : '#DC2626'} strokeWidth="2.5" fill="none" strokeLinecap="round" />
+            <path d="M25 41 Q32 36 39 41" stroke={isHighContrast ? '#EF4444' : '#DC2626'} strokeWidth="2" fill="none" strokeLinecap="round" />
+            {/* Alert badge */}
+            <circle cx="44" cy="18" r="5" fill="#DC2626" />
+            <text x="44" y="22" textAnchor="middle" fontSize="8" fontWeight="bold" fill="#FFFFFF">!</text>
+          </g>
+        );
+
+      case 'cough':
+        return (
+          <g>
+            {/* Head profile coughing */}
+            <path d="M16 14 C24 12 32 14 32 21 C32 24 30 26 33 28 H38 V33 H33 C31 35 33 40 33 44 C33 50 25 52 16 52" fill={isHighContrast ? '#1E293B' : '#E0E7FF'} stroke={strokeColor} strokeWidth={strokeWidth} strokeLinejoin="round" />
+            <path d="M24 23 L28 25" stroke={strokeColor} strokeWidth="2" strokeLinecap="round" />
+            {/* Cough bursts from mouth */}
+            <path d="M42 27 C46 25 48 29 52 27" stroke={isHighContrast ? '#38BDF8' : '#0284C7'} strokeWidth="2.5" fill="none" strokeLinecap="round" />
+            <path d="M40 33 C45 33 47 37 54 35" stroke={isHighContrast ? '#38BDF8' : '#0284C7'} strokeWidth="2.5" fill="none" strokeLinecap="round" />
+            <path d="M42 39 C46 41 49 39 52 42" stroke={isHighContrast ? '#38BDF8' : '#0284C7'} strokeWidth="2.5" fill="none" strokeLinecap="round" />
+            <circle cx="48" cy="31" r="1.5" fill={isHighContrast ? '#38BDF8' : '#0284C7'} />
+          </g>
+        );
+
       default:
         return (
           <circle cx="32" cy="32" r="20" fill={isHighContrast ? '#333333' : '#E2E8F0'} stroke={strokeColor} strokeWidth={strokeWidth} />

@@ -566,6 +566,149 @@ export const ENGLISH_WORDS: EnglishWord[] = [
     exampleSentenceSk: 'Zavolajte záchrannú službu!',
     iconType: 'emergency'
   },
+  {
+    id: 'w-mildfever',
+    category: 'health',
+    english: 'Mild fever',
+    phoneticSk: 'maild fí-vr',
+    slovak: 'Zvýšená teplota',
+    explanation: 'Mierne zvýšená teplota (okolo 37 až 38 °C), kedy sa človek necíti dobre.',
+    exampleSentenceEn: 'I have a mild fever today.',
+    exampleSentenceSk: 'Dnes mám zvýšenú teplotu.',
+    iconType: 'mildfever'
+  },
+  {
+    id: 'w-fever',
+    category: 'health',
+    english: 'Fever',
+    phoneticSk: 'fí-vr',
+    slovak: 'Horúčka',
+    explanation: 'Vysoká telesná teplota nad 38 °C so zimnicou alebo potením.',
+    exampleSentenceEn: 'He has a high fever and chills.',
+    exampleSentenceSk: 'Má vysokú horúčku a triašku.',
+    iconType: 'fever'
+  },
+  {
+    id: 'w-ae',
+    category: 'health',
+    english: 'A&E (Emergency)',
+    phoneticSk: 'ej end í',
+    slovak: 'Urgentný príjem / Úrazovka',
+    explanation: 'Skratka pre Accident & Emergency – nemocničná pohotovosť a úrazovka v zahraničí.',
+    exampleSentenceEn: 'Take him to the nearest A&E immediately.',
+    exampleSentenceSk: 'Okamžite ho vezmite na najbližší urgentný príjem.',
+    iconType: 'ae'
+  },
+  {
+    id: 'w-ambulance',
+    category: 'health',
+    english: 'Ambulance',
+    phoneticSk: 'em-bju-lens',
+    slovak: 'Sanitka / Záchranka',
+    explanation: 'Zdravotnícke záchranné vozidlo s majákom na rýchly prevoz pacienta.',
+    exampleSentenceEn: 'Please call an ambulance right now!',
+    exampleSentenceSk: 'Prosím, okamžite zavolajte sanitku!',
+    iconType: 'ambulance'
+  },
+  {
+    id: 'w-fracture',
+    category: 'health',
+    english: 'Fracture / Broken bone',
+    phoneticSk: 'frék-čr / bróu-kn bóun',
+    slovak: 'Zlomenina',
+    explanation: 'Zlomená alebo nalomená kosť po páde či úraze (napr. ruka, noha).',
+    exampleSentenceEn: 'I think my wrist has a fracture.',
+    exampleSentenceSk: 'Myslím, že mám zlomené zápästie.',
+    iconType: 'fracture'
+  },
+  {
+    id: 'w-vomiting',
+    category: 'health',
+    english: 'Vomiting / Nausea',
+    phoneticSk: 'vo-mi-ting / nó-zi-a',
+    slovak: 'Zvracanie / Nevoľnosť',
+    explanation: 'Žalúdočná nevoľnosť s nutkaním na zvracanie pri otrave či viróze.',
+    exampleSentenceEn: 'I feel sick and I am vomiting.',
+    exampleSentenceSk: 'Je mi nevoľno a zvraciam.',
+    iconType: 'vomiting'
+  },
+  {
+    id: 'w-head',
+    category: 'health',
+    english: 'Head',
+    phoneticSk: 'hed',
+    slovak: 'Hlava',
+    explanation: 'Hlava človeka – dôležité slovo pri bolestiach hlavy alebo točení hlavy.',
+    exampleSentenceEn: 'My head hurts very much.',
+    exampleSentenceSk: 'Veľmi ma bolí hlava.',
+    iconType: 'head'
+  },
+  {
+    id: 'w-arm',
+    category: 'health',
+    english: 'Arm / Hand',
+    phoneticSk: 'árm / hend',
+    slovak: 'Ruka',
+    explanation: 'Ruka (arm = celá ruka, hand = dlaň s prstami) pri bolestiach kĺbov a svalov.',
+    exampleSentenceEn: 'I cannot lift my left arm.',
+    exampleSentenceSk: 'Nemôžem zdvihnúť ľavú ruku.',
+    iconType: 'arm'
+  },
+  {
+    id: 'w-leg',
+    category: 'health',
+    english: 'Leg / Foot',
+    phoneticSk: 'leg / fút',
+    slovak: 'Noha / Chodidlo',
+    explanation: 'Dolná končatina (leg = noha, foot = chodidlo) pri bolesti kolena či vyvrtnutí.',
+    exampleSentenceEn: 'My right leg is swollen and painful.',
+    exampleSentenceSk: 'Moja pravá noha je opuchnutá a bolestivá.',
+    iconType: 'leg'
+  },
+  {
+    id: 'w-chest',
+    category: 'health',
+    english: 'Chest',
+    phoneticSk: 'čest',
+    slovak: 'Hrudník',
+    explanation: 'Predná časť trupu – kľúčové slovo pri tlaku na hrudi a ťažkostiach s dychom.',
+    exampleSentenceEn: 'I have sharp pain in my chest.',
+    exampleSentenceSk: 'Mám pichavú bolesť v hrudníku.',
+    iconType: 'chest'
+  },
+  {
+    id: 'w-stomach',
+    category: 'health',
+    english: 'Stomach / Belly',
+    phoneticSk: 'sta-mak / be-li',
+    slovak: 'Brucho / Žalúdok',
+    explanation: 'Brušná dutina a žalúdok pri kŕčoch, pálení záhy alebo tráviacich ťažkostiach.',
+    exampleSentenceEn: 'I have severe stomach cramps.',
+    exampleSentenceSk: 'Mám silné kŕče v bruchu.',
+    iconType: 'stomach'
+  },
+  {
+    id: 'w-diarrhea',
+    category: 'health',
+    english: 'Diarrhea',
+    phoneticSk: 'daj-a-rí-a',
+    slovak: 'Hnačka',
+    explanation: 'Častá riedka stolica spojená so stratou tekutín a slabosťou.',
+    exampleSentenceEn: 'I need pills for severe diarrhea.',
+    exampleSentenceSk: 'Potrebujem lieky proti silnej hnačke.',
+    iconType: 'diarrhea'
+  },
+  {
+    id: 'w-cough',
+    category: 'health',
+    english: 'Cough',
+    phoneticSk: 'kof',
+    slovak: 'Kašeľ',
+    explanation: 'Suchý alebo vlhký kašeľ pri zápale priedušiek alebo nachladnutí.',
+    exampleSentenceEn: 'I have had a bad cough for three days.',
+    exampleSentenceSk: 'Už tri dni mám silný kašeľ.',
+    iconType: 'cough'
+  },
 
   // --- Obchod, kaviareň a reštaurácia ---
   {
